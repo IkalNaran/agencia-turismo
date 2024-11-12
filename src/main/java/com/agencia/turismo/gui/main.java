@@ -4,14 +4,16 @@
  */
 package com.agencia.turismo.gui;
 
+import com.agencia.turismo.repository.MariaDBConnection;
+
 /**
  *
  * @author Dana Gonzalez
  */
 public class main {
     public static void main(String[] args) {
-        System.out.println("Hola mundo");
-        System.out.println("adios flacos");
+        MariaDBConnection connection = new MariaDBConnection();
+        connection.setConn();
         
     }
 }
