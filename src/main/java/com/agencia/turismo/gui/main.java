@@ -6,14 +6,12 @@ package com.agencia.turismo.gui;
 
 import com.agencia.turismo.repository.MariaDBConnection;
 
-/**
- *
- * @author Dana Gonzalez
- */
+import java.sql.SQLException;
+
 public class main {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         MariaDBConnection connection = new MariaDBConnection();
         connection.setConn();
-        
+
     }
 }
