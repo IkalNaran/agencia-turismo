@@ -4,14 +4,14 @@
  */
 package com.agencia.turismo.gui;
 
-import com.agencia.turismo.repository.MariaDBConnection;
+import com.agencia.turismo.service.Crud;
 
 import java.sql.SQLException;
 
 public class main {
     public static void main(String[] args){
-        MariaDBConnection connection = new MariaDBConnection();
-        connection.setConn();
+        Crud connection = new Crud();
+        connection.verDatos();
 
     }
 }
