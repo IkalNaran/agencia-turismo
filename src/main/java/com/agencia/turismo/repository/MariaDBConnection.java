@@ -16,7 +16,7 @@ public class MariaDBConnection {
 
     public void setConn() {
         try{
-             conn= (Connection) DriverManager.getConnection(url,user,pass);
+            conn= (Connection) DriverManager.getConnection(url,user,pass);
             System.out.println("Conectado");
         }catch(SQLException e){
             System.out.println(e.getMessage());

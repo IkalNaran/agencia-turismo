@@ -4,10 +4,15 @@
  */
 package com.agencia.turismo.service;
 
+import com.agencia.turismo.repository.MariaDBConnection;
+
 /**
  *
  * @author Jefem
  */
 public class Hoteles {
+    MariaDBConnection mdbc = new MariaDBConnection();
+    
+    
     
 }
