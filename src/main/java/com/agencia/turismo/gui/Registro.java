@@ -11,7 +11,6 @@ public class Registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -24,24 +23,20 @@ public class Registro extends javax.swing.JFrame {
         txttelefono = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtdireccion = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtcontraseña = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(760, 460));
+        setMinimumSize(new java.awt.Dimension(812, 450));
         setPreferredSize(new java.awt.Dimension(812, 450));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setText("                      Registro");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 352, -1));
 
         jLabel4.setText("Nombre(obligatorio)");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(364, 52, -1, -1));
@@ -73,14 +68,6 @@ public class Registro extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, -1));
         getContentPane().add(txtdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 129, -1));
 
-        jButton1.setText("Registrarse");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, -1, -1));
-
         jLabel9.setText("Usuario(obligatorio)");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, -1, -1));
         getContentPane().add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 114, -1));
@@ -95,10 +82,24 @@ public class Registro extends javax.swing.JFrame {
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, -1, -1));
         getContentPane().add(txtcontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 114, -1));
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 470, 480));
+        jButton1.setText("Registrarse");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, -1, -1));
+
+        jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
@@ -107,47 +108,52 @@ public class Registro extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-     if (txtnombre.getText().trim().isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Nombre' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    if (txtapellido.getText().trim().isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Apellido' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    if (txtemail.getText().trim().isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Email' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    if (txtedad.getText().trim().isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Edad' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    if (txttelefono.getText().trim().isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Telefono' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    if (txtdireccion.getText().trim().isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Direccion' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    if (txtusuario.getText().trim().isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Usuario' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    if (txtcontraseña.getText().trim().isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Contraseña' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    javax.swing.JOptionPane.showMessageDialog(this, "Registro exitoso.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-    
-    // Cerrar la ventana de registro
-    this.dispose();
+        if (txtnombre.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Nombre' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (txtapellido.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Apellido' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (txtemail.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Email' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (txtedad.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Edad' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (txttelefono.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Telefono' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (txtdireccion.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Direccion' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (txtusuario.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Usuario' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (txtcontraseña.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Contraseña' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        javax.swing.JOptionPane.showMessageDialog(this, "Registro exitoso.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-    // Abrir la ventana de login
-    //new Login().setVisible(true);
-        
+        // Cerrar la ventana de registro
+        this.dispose();
+
+        // Abrir la ventana de login
+        //new Login().setVisible(true);
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new Inicio().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,18 +192,17 @@ public class Registro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcontraseña;
     private javax.swing.JTextField txtdireccion;

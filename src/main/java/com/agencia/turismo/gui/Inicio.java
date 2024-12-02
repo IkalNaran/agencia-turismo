@@ -39,6 +39,8 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(812, 450));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -53,8 +55,6 @@ public class Inicio extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDREA\\Documents\\NetBeansProjects\\agencia-turismo\\src\\main\\java\\EXPLOITIZ\\LOGO-removebg-preview (1).png")); // NOI18N
 
         jButton5.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
         jButton5.setText("ACERCA DE NOSTROS");
@@ -111,11 +111,10 @@ public class Inicio extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("AGENCIA DE VIAJES");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDREA\\Documents\\NetBeansProjects\\agencia-turismo\\src\\main\\java\\EXPLOITIZ\\Unicio.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 810, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

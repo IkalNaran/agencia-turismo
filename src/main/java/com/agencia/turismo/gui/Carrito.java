@@ -19,11 +19,13 @@ public class Carrito extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        bteliminar = new javax.swing.JButton();
+        bRegresar = new javax.swing.JButton();
         btvaciarcarrito = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        bteliminar1 = new javax.swing.JButton();
+        bteliminar2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -36,13 +38,13 @@ public class Carrito extends javax.swing.JFrame {
         jLabel2.setText("Carrito");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 100, 80));
 
-        bteliminar.setText("Eliminar");
-        bteliminar.addActionListener(new java.awt.event.ActionListener() {
+        bRegresar.setText("Regresar");
+        bRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bteliminarActionPerformed(evt);
+                bRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(bteliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, -1));
+        getContentPane().add(bRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, -1, -1));
 
         btvaciarcarrito.setText("Vaciar carrito");
         btvaciarcarrito.addActionListener(new java.awt.event.ActionListener() {
@@ -72,10 +74,27 @@ public class Carrito extends javax.swing.JFrame {
         jButton1.setText("Pagar");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, -1, -1));
 
+        bteliminar1.setText("Eliminar");
+        bteliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bteliminar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bteliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, -1));
+
+        bteliminar2.setText("Eliminar");
+        bteliminar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bteliminar2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bteliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, -1));
+
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefem\\OneDrive\\Documents\\agencia-turismo\\EXPLOREITIZ\\Carrito.png")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btvaciarcarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btvaciarcarritoActionPerformed
@@ -90,24 +109,18 @@ public class Carrito extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btvaciarcarritoActionPerformed
 
-    private void bteliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bteliminarActionPerformed
+    private void bRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegresarActionPerformed
+        new Reserva().setVisible(true); 
+        this.setVisible(false);
+    }//GEN-LAST:event_bRegresarActionPerformed
+
+    private void bteliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bteliminar1ActionPerformed
         // TODO add your handling code here:
-        int row = tabla1.getSelectedRow();
-        
-        if (row == -1) {
-            // No se ha seleccionado ninguna fila
-            JOptionPane.showMessageDialog(this, "Por favor, selecciona un registro para eliminar.");
-        } else {
-            int response = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres eliminar este registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
-            
-            if (response == JOptionPane.YES_OPTION) {
-                // Eliminar el registro seleccionado
-                DefaultTableModel model = (DefaultTableModel) tabla1.getModel();
-                model.removeRow(row);
-                JOptionPane.showMessageDialog(this, "Registro eliminado con éxito.");
-            }
-        }
-    }//GEN-LAST:event_bteliminarActionPerformed
+    }//GEN-LAST:event_bteliminar1ActionPerformed
+
+    private void bteliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bteliminar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bteliminar2ActionPerformed
 
    
     public static void main(String args[]) {
@@ -143,7 +156,9 @@ public class Carrito extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bteliminar;
+    private javax.swing.JButton bRegresar;
+    private javax.swing.JButton bteliminar1;
+    private javax.swing.JButton bteliminar2;
     private javax.swing.JButton btvaciarcarrito;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;

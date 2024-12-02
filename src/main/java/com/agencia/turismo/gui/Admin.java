@@ -51,6 +51,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(812, 450));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -106,8 +107,6 @@ public class Admin extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jTextField1.setText("Descripcion:");
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 400, 220));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Dana Gonzalez\\Pictures\\EXPLOITIZ\\Admin.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         pack();
