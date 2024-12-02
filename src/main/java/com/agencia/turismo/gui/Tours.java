@@ -84,7 +84,7 @@ public class Tours extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cancelar");
+        jButton1.setText("Regresar");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 410, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
@@ -92,15 +92,11 @@ public class Tours extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Agregar");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, -1, -1));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Dana Gonzalez\\Pictures\\EXPLOITIZ\\LOGO-removebg-preview (1).png")); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, -1, -1));
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 120, -1));
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 120, -1));
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 140, -1));
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 130, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Dana Gonzalez\\Pictures\\EXPLOITIZ\\tours.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         pack();

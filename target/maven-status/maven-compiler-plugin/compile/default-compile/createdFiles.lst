@@ -18,11 +18,9 @@ com\agencia\turismo\gui\Inicio$3.class
 com\agencia\turismo\gui\Hotel$4.class
 com\agencia\turismo\gui\Tours$2.class
 com\agencia\turismo\gui\Reserva$7.class
-<<<<<<< HEAD
-=======
 com\agencia\turismo\service\Vuelos.class
+com\agencia\turismo\gui\Login$3.class
 com\agencia\turismo\gui\Inicio$2.class
->>>>>>> 0f88aac3b399548a1eebd4da22e401f7c8f84df8
 com\agencia\turismo\gui\Reserva$4.class
 com\agencia\turismo\service\Hoteles.class
 com\agencia\turismo\gui\Reserva$6.class

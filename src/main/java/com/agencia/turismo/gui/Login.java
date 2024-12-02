@@ -45,8 +45,6 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDREA\\Documents\\NetBeansProjects\\agencia-turismo\\src\\main\\java\\EXPLOITIZ\\LOGO-removebg-preview (1).png")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 110, 70));
 
         jTextArea1.setColumns(20);
@@ -73,11 +71,16 @@ public class Login extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         jButton1.setText("INICIAR SESION");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 170, 30));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 170, 30));
 
         jButton2.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         jButton2.setText("OLVIDASTE TU CONTRASEÑA");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 260, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 260, 30));
 
         jButton3.setText("!!REGISTRARSE AHORA!!");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -86,18 +89,22 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 240, 30));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDREA\\Documents\\NetBeansProjects\\agencia-turismo\\src\\main\\java\\EXPLOITIZ\\Login.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 814, 464));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-Registro rg = new  Registro();
-rg.setVisible(true);
-this.setVisible (false);         // TODO add your handling code here:
+        Registro rg = new  Registro();
+        rg.setVisible(true);
+        this.setVisible (false);         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       Reserva rs = new Reserva(); 
+       rs.setVisible(true); 
+       this.setVisible (false);  
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

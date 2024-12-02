@@ -4,10 +4,16 @@
  */
 package com.agencia.turismo.service;
 
+import com.agencia.turismo.repository.MariaDBConnection;
+
 /**
  *
  * @author Jefem
  */
 public class Tours {
+    MariaDBConnection mdbc = new MariaDBConnection();
     
+    public void getName(){
+        
+    }
 }

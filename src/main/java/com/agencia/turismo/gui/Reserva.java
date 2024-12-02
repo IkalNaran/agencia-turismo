@@ -87,38 +87,33 @@ public class Reserva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bthotelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bthotelesActionPerformed
-        // TODO add your handling code here:
-        //new Hoteles().setVisible(true);
+        new Hotel().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bthotelesActionPerformed
 
     private void btvuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btvuelosActionPerformed
-        // TODO add your handling code here:
-        //new Vuelos().setVisible(true);
+        new Vuelos().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btvuelosActionPerformed
 
     private void bttoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttoursActionPerformed
-        // TODO add your handling code here:
-        //new Tours().setVisible(true);
+        new Tours().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bttoursActionPerformed
 
     private void btcarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcarritoActionPerformed
-        // TODO add your handling code here:
+
         new Carrito().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btcarritoActionPerformed
 
     private void btcerrarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcerrarsesionActionPerformed
-        // TODO add your handling code here:
-        //new Login().setVisible(true);
+        Inicio inicio = new Inicio(); 
+        inicio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btcerrarsesionActionPerformed
 
     private void btsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsalirActionPerformed
-        // TODO add your handling code here:
-        //new Principal().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btsalirActionPerformed
 
