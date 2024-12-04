@@ -4,12 +4,14 @@
  */
 package com.agencia.turismo.gui;
 
+import com.agencia.turismo.service.Tour;
+
 /**
  *
  * @author Dana Gonzalez
  */
 public class Tours extends javax.swing.JFrame {
-
+Tour tour = new Tour();
     /**
      * Creates new form Tours
      */
@@ -27,19 +29,17 @@ public class Tours extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        CBTours = new javax.swing.JComboBox<>();
+        descripcion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BRegresar = new javax.swing.JButton();
+        BAgregar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        duracion = new javax.swing.JTextField();
+        destino = new javax.swing.JTextField();
+        precio = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,181 +52,75 @@ public class Tours extends javax.swing.JFrame {
         jLabel2.setText("Tours");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opcion ", "Cuidad de Mexico", "Machu Picchu", "Safari en Sudáfrica", "Antartida", "Tour por la Riviera Maya", "Tour de vino en napa", "Tour de Senderismo en los Andes", "Tour por la ruta 66", "Tour por los Fioros Noruegos", "Tour a las Piramides de Egitop", " " }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        CBTours.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opcion "}));
+        CBTours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                CBToursActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 190, 30));
+        getContentPane().add(CBTours, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 190, 30));
 
-        jTextField1.setText("Descripcion:");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 410, 270));
+        descripcion.setText("Descripcion:");
+        getContentPane().add(descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 410, 270));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Duracion:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Destino:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Pais:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel6.setText("Precio");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Regresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BRegresar.setBackground(new java.awt.Color(0, 0, 0));
+        BRegresar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        BRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        BRegresar.setText("Regresar");
+        BRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, -1, -1));
+        getContentPane().add(BRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Agregar");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, -1, -1));
+        BAgregar.setBackground(new java.awt.Color(0, 0, 0));
+        BAgregar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        BAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        BAgregar.setText("Agregar");
+        getContentPane().add(BAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, -1, -1));
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, -1, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 120, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 120, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 140, -1));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 130, -1));
+        getContentPane().add(duracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 260, -1));
+        getContentPane().add(destino, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 260, -1));
+        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 160, -1));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-     
-        String Tours = (String) jComboBox1.getSelectedItem();
+    private void CBToursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBToursActionPerformed
+        tour.setName();
         
-        switch (Tours) {
-                    case "Cuidad de Mexico":
-                        jTextField2.setText("1 dia");
-                        jTextField3.setText("Cuidad de Mexico");
-                        jTextField4.setText("Mexico");
-                        jTextField5.setText("800.00 pesos");
-                        jTextField1.setText("Recorrido por los principales puntos turísticos "
-                                            + "de la Ciudad de México, como el Zócalo, "
-                                            + "Chapultepec y Teotihuacán");
-    
-                        break;
-                    case "Machu Picchu":
-                        jTextField2.setText("3 dias");
-                        jTextField3.setText("Machu Picchu");
-                        jTextField4.setText("Perú");
-                        jTextField5.setText("4500.50 pesos");
-                        jTextField1.setText("Recorrido por los principales puntos turísticos "
-                                            + "de la Ciudad de México, como el Zócalo, "
-                                            + "Chapultepec y Teotihuacán");
-                        
-                        break;
-                    case "Safari en Sudáfrica":
-                        jTextField2.setText("7 dias");
-                        jTextField3.setText("Kruger Park");
-                        jTextField4.setText("Sudafrica");
-                        jTextField5.setText("12000.00 pesos");
-                        jTextField1.setText("Recorrido por los principales puntos turísticos "
-                                            + "de la Ciudad de México, como el Zócalo, "
-                                            + "Chapultepec y Teotihuacán");
-                        
-                        break;
-                        
-                    case "Antartida":
-                        jTextField2.setText("10 dias");
-                        jTextField3.setText("Tour a la Antartida");
-                        jTextField4.setText("Antartida");
-                        jTextField5.setText("22000.75 pesos");
-                        jTextField1.setText("Recorrido por los principales puntos turísticos "
-                                            + "de la Ciudad de México, como el Zócalo, "
-                                            + "Chapultepec y Teotihuacán");
-                        
-                        break;
-                        
-                     case "Tour por la Riviera Maya":
-                        jTextField2.setText("5 dias");
-                        jTextField3.setText("Rivera Maya");
-                        jTextField4.setText("Mexico");
-                        jTextField5.setText("3000.00 pesos");
-                        jTextField1.setText("Recorrido por los principales puntos turísticos "
-                                            + "de la Ciudad de México, como el Zócalo, "
-                                            + "Chapultepec y Teotihuacán");
-                        
-                        break;
-                     case "Tour de vino en napa":
-                        jTextField2.setText("3 dias");
-                        jTextField3.setText("Napa Valley");
-                        jTextField4.setText("Estados Unidos");
-                        jTextField5.setText("2500.00 pesos");
-                        jTextField1.setText("Recorrido por los principales puntos turísticos "
-                                            + "de la Ciudad de México, como el Zócalo, "
-                                            + "Chapultepec y Teotihuacán");
-                        
-                        break;
-                        
-                     case "Tour de Senderismo en los Andes":
-                        jTextField2.setText("6 dias");
-                        jTextField3.setText("Andes");
-                        jTextField4.setText("Chile/Argentina");
-                        jTextField5.setText("3500.00 pesos");
-                        jTextField1.setText("Recorrido por los principales puntos turísticos "
-                                            + "de la Ciudad de México, como el Zócalo, "
-                                            + "Chapultepec y Teotihuacán");
-                        
-                        break;
-                        
-                     case "Tour por la ruta 66":
-                        jTextField2.setText("8 dias");
-                        jTextField3.setText("Ruta 66");
-                        jTextField4.setText("Estados Unidos");
-                        jTextField5.setText("4200.00 pesos");
-                        jTextField1.setText("Recorrido por los principales puntos turísticos "
-                                            + "de la Ciudad de México, como el Zócalo, "
-                                            + "Chapultepec y Teotihuacán");
-                        
-                        break;
-                        
-                    case "Tour por los Fioros Noruegos":
-                        jTextField2.setText("7 dias");
-                        jTextField3.setText("Fioros");
-                        jTextField4.setText("Noruega");
-                        jTextField5.setText("7000.00 pesos");
-                        jTextField1.setText("Recorrido por los principales puntos turísticos "
-                                            + "de la Ciudad de México, como el Zócalo, "
-                                            + "Chapultepec y Teotihuacán");
-                        
-                        break;
-                        
-                        case "Tour a las Piramides de Egitop":
-                        jTextField2.setText("4 dias");
-                        jTextField3.setText("Giza");
-                        jTextField4.setText("Egipto");
-                        jTextField5.setText("6000.00 pesos");
-                        jTextField1.setText("Recorrido por los principales puntos turísticos "
-                                            + "de la Ciudad de México, como el Zócalo, "
-                                            + "Chapultepec y Teotihuacán");
-                        
-                        break;
-                }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        for (String name : tour.getName() ){
+            CBTours.addItem(name);
+        }
+        
+        String nameTour = (String) CBTours.getSelectedItem();
+        descripcion.setText(tour.getDescription(nameTour));
+        duracion.setText(tour.getDuration(nameTour));
+        destino.setText(tour.getDestiny(nameTour));
+        precio.setText("$" + tour.getPrice(nameTour) + " pesos");
+    }//GEN-LAST:event_CBToursActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegresarActionPerformed
        new Reserva().setVisible(true);
        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,20 +159,18 @@ public class Tours extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton BAgregar;
+    private javax.swing.JButton BRegresar;
+    private javax.swing.JComboBox<String> CBTours;
+    private javax.swing.JTextField descripcion;
+    private javax.swing.JTextField destino;
+    private javax.swing.JTextField duracion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField precio;
     // End of variables declaration//GEN-END:variables
 }

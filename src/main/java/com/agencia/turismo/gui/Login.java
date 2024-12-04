@@ -1,8 +1,7 @@
 package com.agencia.turismo.gui;
 
 import com.agencia.turismo.gui.Registro;
-
-
+import com.agencia.turismo.service.Ingresar;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -33,14 +32,15 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        usuario = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        contrasena = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        BIniciarSesion = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        BRregresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,9 +50,9 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 110, 70));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        usuario.setColumns(20);
+        usuario.setRows(5);
+        jScrollPane1.setViewportView(usuario);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 300, 40));
 
@@ -61,9 +61,9 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("EMAIL/USUARIO");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 150, -1));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        contrasena.setColumns(20);
+        contrasena.setRows(5);
+        jScrollPane2.setViewportView(contrasena);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 300, 40));
 
@@ -72,18 +72,18 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("PASSWORD");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 160, -1));
 
-        jButton1.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        jButton1.setText("INICIAR SESION");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BIniciarSesion.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        BIniciarSesion.setText("INICIAR SESION");
+        BIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 170, 30));
+        getContentPane().add(BIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 170, 30));
 
         jButton2.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         jButton2.setText("OLVIDASTE TU CONTRASEÑA");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 260, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 260, 30));
 
         jButton3.setText("!!REGISTRARSE AHORA!!");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +92,14 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 240, 30));
+
+        BRregresar.setText("REGRESAR");
+        BRregresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BRregresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BRregresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 360, 100, 30));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 814, 464));
 
         pack();
@@ -104,11 +112,22 @@ public class Login extends javax.swing.JFrame {
         this.setVisible (false);         
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Reserva rs = new Reserva(); 
-       rs.setVisible(true); 
-       this.setVisible (false);  
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void BIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BIniciarSesionActionPerformed
+        Ingresar ingresar = new Ingresar(); 
+        String user = usuario.getText();
+        String pass = contrasena.getText();
+        
+        boolean result = ingresar.checkLogin(user, pass);
+        ingresar.showLoginResult(result);
+        if(result){
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_BIniciarSesionActionPerformed
+
+    private void BRregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRregresarActionPerformed
+        new Inicio().setVisible(true); 
+        this.setVisible(false);
+    }//GEN-LAST:event_BRregresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,7 +166,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BIniciarSesion;
+    private javax.swing.JButton BRregresar;
+    private javax.swing.JTextArea contrasena;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -156,7 +177,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea usuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,12 +4,14 @@
  */
 package com.agencia.turismo.gui;
 
+import com.agencia.turismo.service.Vuelo;
+
 /**
  *
  * @author Dana Gonzalez
  */
 public class Vuelos extends javax.swing.JFrame {
-
+Vuelo vuelo = new Vuelo();
     /**
      * Creates new form Vuelos
      */
@@ -26,105 +28,116 @@ public class Vuelos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        CBVuelos = new javax.swing.JComboBox<>();
+        BRegresar = new javax.swing.JButton();
+        BAgregar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        precio = new javax.swing.JTextField();
+        tipoVuelo = new javax.swing.JTextField();
+        numero = new javax.swing.JTextField();
+        destinoO = new javax.swing.JTextField();
+        destinoF = new javax.swing.JTextField();
+        pais = new javax.swing.JTextField();
+
+        jLabel1.setPreferredSize(new java.awt.Dimension(812, 250));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Origen", "Ciudad de Mexico", "Monterrey", "Tijuana", "Guadalajara", "Los Angeles", "Chicago", "Londres", " " }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 140, 30));
-
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabel2.setText("Vuelos");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
-        jComboBox2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destino", "Guadalajara", "Cuidad de Mexico", "Monterrey", "Cancún ", "New York", "Miami", " " }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 140, 30));
-
-        jComboBox3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pais", "México", "Estados Unidos", " " }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        CBVuelos.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        CBVuelos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Airolinea"}));
+        CBVuelos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                CBVuelosActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 160, 30));
+        getContentPane().add(CBVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 140, 30));
 
-        jComboBox4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo de Vuelo", "Nacional", "Internacional", " " }));
-        getContentPane().add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 140, 30));
-
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aerolinea", " " }));
-        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+        BRegresar.setBackground(new java.awt.Color(0, 0, 0));
+        BRegresar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        BRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        BRegresar.setText("Regresar");
+        BRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox5ActionPerformed(evt);
+                BRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 140, 30));
+        getContentPane().add(BRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Regresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, -1, -1));
-
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Agregar");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, -1, -1));
+        BAgregar.setBackground(new java.awt.Color(0, 0, 0));
+        BAgregar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        BAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        BAgregar.setText("Agregar");
+        getContentPane().add(BAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, -1, -1));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel4.setText("Precio: ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
+        jLabel4.setText("Pais:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
 
-        jLabel1.setPreferredSize(new java.awt.Dimension(812, 250));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 450));
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setText("Numero airolinea:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setText("Destino origen");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel7.setText("Destino Final");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, -1, 30));
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel8.setText("Precio:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setText("Tipo de vuelo:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, 200, -1));
+        getContentPane().add(tipoVuelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 260, -1));
+        getContentPane().add(numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 260, -1));
+        getContentPane().add(destinoO, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 260, -1));
+        getContentPane().add(destinoF, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 260, -1));
+        getContentPane().add(pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 220, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox5ActionPerformed
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegresarActionPerformed
         new Reserva().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BRegresarActionPerformed
+
+    private void CBVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBVuelosActionPerformed
+       vuelo.setName();
+        
+        for (String name : vuelo.getName()){
+            CBVuelos.addItem(name);
+        }
+        
+        String nameTour = (String) CBVuelos.getSelectedItem();
+        tipoVuelo.setText(vuelo.getType(nameTour));
+        numero.setText(vuelo.getNumberAir(nameTour));
+        destinoO.setText(vuelo.getOrigin(nameTour));
+        destinoF.setText(vuelo.getEnd(nameTour));
+        pais.setText(vuelo.getCountry(nameTour));
+        precio.setText("$" + vuelo.getPrice(nameTour) + " pesos");
+    }//GEN-LAST:event_CBVuelosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,16 +176,23 @@ public class Vuelos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JButton BAgregar;
+    private javax.swing.JButton BRegresar;
+    private javax.swing.JComboBox<String> CBVuelos;
+    private javax.swing.JTextField destinoF;
+    private javax.swing.JTextField destinoO;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField numero;
+    private javax.swing.JTextField pais;
+    private javax.swing.JTextField precio;
+    private javax.swing.JTextField tipoVuelo;
     // End of variables declaration//GEN-END:variables
 }

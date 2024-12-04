@@ -1,5 +1,6 @@
 package com.agencia.turismo.gui;
 
+import com.agencia.turismo.service.Hoteles;
 import javax.swing.ImageIcon;
 
 
@@ -14,7 +15,7 @@ import javax.swing.ImageIcon;
  * @author ANDREA
  */
 public class Hotel extends javax.swing.JFrame {
-
+ Hoteles ht = new Hoteles();
     /**
      * Creates new form HOTELES
      */
@@ -32,19 +33,20 @@ public class Hotel extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        CBHotel = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        precio = new javax.swing.JLabel();
+        direccion = new javax.swing.JTextField();
+        pais = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        tipo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(812, 450));
@@ -55,13 +57,13 @@ public class Hotel extends javax.swing.JFrame {
         jLabel2.setText("Hoteles");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hotel Plaza", "Gran Caribe", "Beach Resort", "Hotel Central", "Casa Blanca", "Royal Suites", "Grand Hyatt", "La Playa", "Hotel Andino", "Hotel de Ville" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        CBHotel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hotel Plaza", "Gran Caribe", "Beach Resort", "Hotel Central", "Casa Blanca", "Royal Suites", "Grand Hyatt", "La Playa", "Hotel Andino", "Hotel de Ville" }));
+        CBHotel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                CBHotelActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 140, -1));
+        getContentPane().add(CBHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 140, -1));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 260, 70));
 
         jLabel4.setText("Direccion:");
@@ -69,22 +71,19 @@ public class Hotel extends javax.swing.JFrame {
 
         jLabel5.setText("Pais:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 360, 20));
 
-        jLabel6.setText("Precio:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        direccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                direccionActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 160, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 190, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 180, -1));
+        getContentPane().add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 360, -1));
+        getContentPane().add(pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 360, -1));
 
         jLabel7.setText("Tipo");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 80, -1));
+        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 360, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,128 +101,34 @@ public class Hotel extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 120, 30));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
+        jLabel8.setText("Precio:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+
+        jLabel9.setText("Precio:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-  String Hoteles  = (String) jComboBox1.getSelectedItem();
-          
-  switch (Hoteles){
-      case "Hotel Plaza":
-          ImageIcon imagen = new ImageIcon("plaza mexico.jpg");
-          jLabel3.setIcon(imagen);
-          jLabel3.setVisible(true);
-          jTextField1.setText("Avenida Reforma 123");
-          jTextField2.setText("Mexico");
-          jTextField3.setText("$2500.50");
-          jTextField4.setText("Lujo (5)");
-           break;
-                
-          case "Gran Caribe":
-          ImageIcon im = new ImageIcon("GRAN CARIBE.jpg");
-          jLabel3.setIcon(im);
-          jLabel3.setVisible(true);
-          jTextField1.setText("Calle 5ta Avenida, 45");
-          jTextField2.setText("Gran Caribe,Cuba");
-          jTextField3.setText("$3000.75");
-          jTextField4.setText("Todo incluido (5)");
-                  break;
-                  
-          case "Beach Resort":
-          jTextField1.setText("Calle ");
-          jTextField2.setText("República Dominicana ");
-          jTextField3.setText("2200.00");
-          jTextField4.setText("Todo incluido (5)");
-          
-                   break;
-                   
-          case "Hotel Central":
-          ImageIcon b = new ImageIcon("GRAN CARIBE.jpg");
-          jLabel3.setIcon(b);
-          jLabel3.setVisible(true);
-          jTextField1.setText("Gran Vía 20");
-          jTextField2.setText(" España");
-          jTextField3.setText("850.00");
-          jTextField4.setText("Económico (4)");
-          //txt1.setText("Hotel Central,España, Gran Vía 20, Madrid, Económico, 850.00");
-                   break;
-                   
-          case"Casa Blanca":
-          ImageIcon c = new ImageIcon("GRAN CARIBE.jpg");
-          jLabel3.setIcon(c);
-          jLabel3.setVisible(true);
-          jTextField1.setText("Carrera 7");
-          jTextField2.setText("Colombia");
-          jTextField3.setText("850.00");
-          jTextField4.setText("Económico (4)");
-          
-          //txt1.setText("Casa Blanca, Colombia, Carrera 7, Bogotá, Boutique, 1500.25");
-                   break;
-                   
-          case"Royal Suites":
-          ImageIcon d = new ImageIcon("GRAN CARIBE.jpg");
-          jLabel3.setIcon(d);
-          jLabel3.setVisible(true);
-          jTextField1.setText("Rue de la Paix 15");
-          jTextField2.setText("Francia");
-          jTextField3.setText("5000.00");
-          jTextField4.setText("Lujo (5)");
-          //txt1.setText("Royal Suites, Francia, Rue de la Paix 15, París, Lujo, 5000.00");
-                   break;
-                   
-          case "Grand Hyatt":
-          ImageIcon e = new ImageIcon("GRAN CARIBE.jpg");
-          jLabel3.setIcon(e);
-          jLabel3.setVisible(true);
-          jTextField1.setText("Park Avenue 7");
-          jTextField2.setText("Estados Unidos");
-          jTextField3.setText("3500.00");
-          jTextField4.setText(" Lujo(5)");
-          //txt1.setText("Grand Hyatt, 'Estados Unidos, Park Avenue 7, Nueva York, Lujo, 3500.00");
-                   break;
-                   
-                   
-          case "La Playa":
-          ImageIcon f = new ImageIcon("GRAN CARIBE.jpg");
-          jLabel3.setIcon(f);
-          jLabel3.setVisible(true);
-          jTextField1.setText("Playa del Carmen 123");
-          jTextField2.setText("México");
-          jTextField3.setText("1800.80");
-          jTextField4.setText("Resort (5)");
-          //txt1.setText("La Playa, México, Playa del Carmen, Quintana Roo, Resort, 1800.80");
-                   break;
-                   
-          case "Hotel Andino":
-          ImageIcon g = new ImageIcon("GRAN CARIBE.jpg");
-          jLabel3.setIcon(g);
-          jLabel3.setVisible(true);
-          jTextField1.setText("Av. Providencia 500");
-          jTextField2.setText(" Chile");
-          jTextField3.setText("1100.00");
-          jTextField4.setText("Económico (4)");
-          //txt1.setText("Hotel Andino, Chile, Av. Providencia 500, Santiago, Económico, 1100.00");
-                   break;
-                   
-          case "Hotel de Ville":
-          ImageIcon h = new ImageIcon("GRAN CARIBE.jpg");
-          jLabel3.setIcon(h);
-          jLabel3.setVisible(true);
-          jTextField1.setText("Rue du Mont-Blanc 10");
-          jTextField2.setText(" Suiza");
-          jTextField3.setText("4500.60");
-          jTextField4.setText("Lujo(5)");
-          //txt1.setText("Hôtel de Ville, Suiza, Rue du Mont-Blanc 10, Ginebra, Lujo, 4500.60");
-                   break;
-  }
-  
-// TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void CBHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBHotelActionPerformed
+       
+        ht.setName();
+        
+        for(String name: ht.getName() ){
+            CBHotel.addItem(name);
+        }
+        String nameHotel = (String) CBHotel.getSelectedItem();
+        tipo.setText(ht.getType(nameHotel));
+        direccion.setText(ht.getAddress(nameHotel));
+        pais.setText(ht.getCountry(nameHotel));
+        precio.setText("$" + ht.getPrice(nameHotel) + " pesos");
+        
+    }//GEN-LAST:event_CBHotelActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_direccionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new Reserva().setVisible(true);
@@ -267,19 +172,20 @@ public class Hotel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CBHotel;
+    private javax.swing.JTextField direccion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField pais;
+    private javax.swing.JLabel precio;
+    private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,7 @@
 package com.agencia.turismo.gui;
 
+import com.agencia.turismo.service.Registrar;
+
 public class Registro extends javax.swing.JFrame {
 
     public Registro() {
@@ -28,9 +30,9 @@ public class Registro extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtcontraseña = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        txtcontrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(812, 450));
@@ -71,16 +73,11 @@ public class Registro extends javax.swing.JFrame {
         jLabel9.setText("Usuario(obligatorio)");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, -1, -1));
         getContentPane().add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 114, -1));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefem\\OneDrive\\Documents\\agencia-turismo\\EXPLOREITIZ\\LOGO-removebg-preview (1).png")); // NOI18N
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, 90));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefem\\OneDrive\\Documents\\agencia-turismo\\EXPLOREITIZ\\Registro.png")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -13, 340, 480));
 
         jLabel10.setText("Contraseña(obligatorio)");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, -1, -1));
-        getContentPane().add(txtcontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 114, -1));
 
         jButton1.setText("Registrarse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +94,7 @@ public class Registro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, -1, -1));
+        getContentPane().add(txtcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, 120, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -108,7 +106,7 @@ public class Registro extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (txtnombre.getText().trim().isEmpty()) {
+        /*if (txtnombre.getText().trim().isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Nombre' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -147,7 +145,23 @@ public class Registro extends javax.swing.JFrame {
 
         // Abrir la ventana de login
         //new Login().setVisible(true);
-
+        */
+        String nombre = txtnombre.getText();
+        String usuario = txtusuario.getText();
+        char[] pass = txtcontrasena.getPassword();
+        String password = new String(pass);
+        String apellido = txtapellido.getText();
+        String email = txtemail.getText();
+        int edad = Integer.parseInt(txtedad.getText());
+        String telefono = txttelefono.getText();
+        String direccion = txtdireccion.getText();
+        
+        Registrar  registrar = new Registrar(); 
+        boolean reg = registrar.insertUsuario(nombre, apellido, edad, telefono, usuario, email, password);
+        if(reg){
+            new Reserva().setVisible(true); 
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -204,7 +218,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtapellido;
-    private javax.swing.JTextField txtcontraseña;
+    private javax.swing.JPasswordField txtcontrasena;
     private javax.swing.JTextField txtdireccion;
     private javax.swing.JTextField txtedad;
     private javax.swing.JTextField txtemail;

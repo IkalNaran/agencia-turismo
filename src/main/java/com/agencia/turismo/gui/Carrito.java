@@ -26,6 +26,8 @@ public class Carrito extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         bteliminar1 = new javax.swing.JButton();
         bteliminar2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,19 +58,19 @@ public class Carrito extends javax.swing.JFrame {
 
         tabla1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Id", "Nombre"
+                "Id", "Tipo de compra", "Nombre", "Precio"
             }
         ));
         jScrollPane1.setViewportView(tabla1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 390, 280));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 620, 280));
 
         jButton1.setBackground(new java.awt.Color(102, 255, 102));
         jButton1.setText("Pagar");
@@ -90,7 +92,15 @@ public class Carrito extends javax.swing.JFrame {
         });
         getContentPane().add(bteliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefem\\OneDrive\\Documents\\agencia-turismo\\EXPLOREITIZ\\Carrito.png")); // NOI18N
+        jLabel1.setText("TOTAL");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, -1, -1));
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 330, 130, -1));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         pack();
@@ -121,6 +131,10 @@ public class Carrito extends javax.swing.JFrame {
     private void bteliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bteliminar2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bteliminar2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
    
     public static void main(String args[]) {
@@ -161,9 +175,11 @@ public class Carrito extends javax.swing.JFrame {
     private javax.swing.JButton bteliminar2;
     private javax.swing.JButton btvaciarcarrito;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tabla1;
     // End of variables declaration//GEN-END:variables
 }

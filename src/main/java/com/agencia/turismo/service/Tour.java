@@ -1,18 +1,18 @@
 package com.agencia.turismo.service;
 
 import com.agencia.turismo.repository.MariaDBConnection;
-import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Hoteles {
+public class Tour {
     private MariaDBConnection mdbc = new MariaDBConnection();
     private List<String> hotelNames = new ArrayList<>();
     
     public void setName(){
-        String query = "SELECT name FROM hotels";
+        String query = "SELECT name FROM tours";
         try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
             try (ResultSet rs = pdst.executeQuery()) {
                 while(rs.next()){
@@ -29,47 +29,69 @@ public class Hoteles {
         return hotelNames;
     }
     
-    public String getType(String name){
-        String query = "SELECT type_hotel FROM hotels WHERE name=?";
+    public String getDescription(String name){
+        String query = "SELECT description FROM tours WHERE name=?";
         try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
             pdst.setString(1, name);
             try (ResultSet rs = pdst.executeQuery()) {
                 if (rs.next()) {
                     // Si hay un resultado, significa que el inicio de sesión fue exitoso
-                    String userId = rs.getString("type_hotel");
+                    String userId = rs.getString("description");
                     return userId;                
                 } else {
                     return "";
                 }
             }
         } catch (SQLException e) {
-            System.out.println("No se puedo obtener e tipo de hotel: " + e);
+            System.out.println("No se puedo obtener e descripcion: " + e);
             return "";
         }
     }
     
-    public String getAddress(String name){
-        String query = "SELECT address FROM hotels WHERE name=?";
+    public String getDestiny(String name){
+        String query = "SELECT destiny FROM tours WHERE name=?";
         try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
             pdst.setString(1, name);
             try (ResultSet rs = pdst.executeQuery()) {
                 if (rs.next()) {
                     // Si hay un resultado, significa que el inicio de sesión fue exitoso
-                    String userId = rs.getString("address");
+                    String userId = rs.getString("destiny");
                     return userId;                
                 } else {
                     return "";
                 }
             }
         } catch (SQLException e) {
-            System.out.println("No se puedo obtener la direccion: " + e);
+            System.out.println("No se puedo obtener el destino: " + e);
             return "";
         }
         
     }
     
+    
+    public String getDuration(String name){
+        String query = "SELECT duration FROM tours WHERE name=?";
+        try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
+            pdst.setString(1, name);
+            try (ResultSet rs = pdst.executeQuery()) {
+                if (rs.next()) {
+                    // Si hay un resultado, significa que el inicio de sesión fue exitoso
+                    String userId = rs.getString("duration");
+                    return userId;                
+                } else {
+                    return "";
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("No se puedo obtener la duracion del tour: " + e);
+            return "";
+        }
+        
+    }
+    
+    
     public String getCountry(String name){
-        String query = "SELECT c.name FROM hotels h JOIN country c ON h.country_id = c.id WHERE h.name=?";
+        String query = "SELECT t.name FROM tours t JOIN country c ON t.country_id = c.id WHERE t.name=?";
         try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
             pdst.setString(1, name);
             try (ResultSet rs = pdst.executeQuery()) {
@@ -89,7 +111,7 @@ public class Hoteles {
     }
     
     public String getPrice(String name){
-        String query = "SELECT price FROM hotels WHERE name=?";
+        String query = "SELECT price FROM tours WHERE name=?";
         try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
             pdst.setString(1, name);
             try (ResultSet rs = pdst.executeQuery()) {

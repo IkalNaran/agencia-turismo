@@ -65,7 +65,6 @@ public class Reserva extends javax.swing.JFrame {
         });
         getContentPane().add(btsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, -1, -1));
 
-        btcarrito.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefem\\OneDrive\\Documents\\agencia-turismo\\EXPLOREITIZ\\Compras car.png")); // NOI18N
         btcarrito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btcarritoActionPerformed(evt);
@@ -80,8 +79,6 @@ public class Reserva extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btcerrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, -1, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefem\\OneDrive\\Documents\\agencia-turismo\\EXPLOREITIZ\\Reserva Ya.png")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         pack();
