@@ -12,9 +12,12 @@ import com.agencia.turismo.service.Vuelo;
  */
 public class Vuelos extends javax.swing.JFrame {
 Vuelo vuelo = new Vuelo();
-    /**
-     * Creates new form Vuelos
-     */
+int id;
+    public Vuelos(int id) {
+        this.id = id;
+        initComponents();
+    }
+    
     public Vuelos() {
         initComponents();
     }
@@ -46,6 +49,7 @@ Vuelo vuelo = new Vuelo();
         destinoO = new javax.swing.JTextField();
         destinoF = new javax.swing.JTextField();
         pais = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         jLabel1.setPreferredSize(new java.awt.Dimension(812, 250));
 
@@ -64,7 +68,7 @@ Vuelo vuelo = new Vuelo();
                 CBVuelosActionPerformed(evt);
             }
         });
-        getContentPane().add(CBVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 140, 30));
+        getContentPane().add(CBVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 140, 30));
 
         BRegresar.setBackground(new java.awt.Color(0, 0, 0));
         BRegresar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -86,33 +90,34 @@ Vuelo vuelo = new Vuelo();
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setText("Pais:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel5.setText("Numero airolinea:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel6.setText("Destino origen");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel7.setText("Destino Final");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, -1, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, 30));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel8.setText("Precio:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel9.setText("Tipo de vuelo:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
-        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, 200, -1));
-        getContentPane().add(tipoVuelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 260, -1));
-        getContentPane().add(numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 260, -1));
-        getContentPane().add(destinoO, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 260, -1));
-        getContentPane().add(destinoF, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 260, -1));
-        getContentPane().add(pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 220, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 200, -1));
+        getContentPane().add(tipoVuelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 260, -1));
+        getContentPane().add(numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 260, -1));
+        getContentPane().add(destinoO, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 260, -1));
+        getContentPane().add(destinoF, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 260, -1));
+        getContentPane().add(pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 220, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         pack();
         setLocationRelativeTo(null);
@@ -182,6 +187,7 @@ Vuelo vuelo = new Vuelo();
     private javax.swing.JTextField destinoF;
     private javax.swing.JTextField destinoO;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

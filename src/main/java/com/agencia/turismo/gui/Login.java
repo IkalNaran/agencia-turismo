@@ -13,7 +13,7 @@ import com.agencia.turismo.service.Ingresar;
  * @author ANDREA
  */
 public class Login extends javax.swing.JFrame {
-
+ Ingresar ingresar = new Ingresar(); 
     /**
      * Creates new form USUARIO
      */
@@ -42,6 +42,8 @@ public class Login extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         BRregresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(812, 450));
@@ -101,6 +103,8 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(BRregresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 360, 100, 30));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 814, 464));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, 70));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         pack();
         setLocationRelativeTo(null);
@@ -113,7 +117,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void BIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BIniciarSesionActionPerformed
-        Ingresar ingresar = new Ingresar(); 
+       
         String user = usuario.getText();
         String pass = contrasena.getText();
         
@@ -125,6 +129,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_BIniciarSesionActionPerformed
 
     private void BRregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRregresarActionPerformed
+
         new Inicio().setVisible(true); 
         this.setVisible(false);
     }//GEN-LAST:event_BRregresarActionPerformed
@@ -175,6 +180,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea usuario;

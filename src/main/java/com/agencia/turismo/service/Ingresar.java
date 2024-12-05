@@ -50,7 +50,11 @@ public class Ingresar {
         JOptionPane.showMessageDialog(null, message, "Resultado del inicio de sesión", messageType);
 
         if (success) {
-            new Reserva().setVisible(true);
+            new Reserva(this.id).setVisible(true);
         }
     }
+   
+   public int getId(){
+       return this.id;
+   }
 }

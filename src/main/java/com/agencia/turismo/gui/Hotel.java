@@ -3,22 +3,15 @@ package com.agencia.turismo.gui;
 import com.agencia.turismo.service.Hoteles;
 import javax.swing.ImageIcon;
 
-
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author ANDREA
- */
 public class Hotel extends javax.swing.JFrame {
  Hoteles ht = new Hoteles();
-    /**
-     * Creates new form HOTELES
-     */
+ int id ;
+ 
+    public Hotel(int id) {
+        this.id = id;
+        initComponents();
+    }
+    
     public Hotel() {
         initComponents();
     }
@@ -47,6 +40,7 @@ public class Hotel extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(812, 450));
@@ -106,6 +100,7 @@ public class Hotel extends javax.swing.JFrame {
 
         jLabel9.setText("Precio:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         pack();
         setLocationRelativeTo(null);
@@ -181,6 +176,7 @@ public class Hotel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
