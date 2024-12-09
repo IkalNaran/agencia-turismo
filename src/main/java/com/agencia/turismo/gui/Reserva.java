@@ -110,8 +110,8 @@ int id;
     }//GEN-LAST:event_bttoursActionPerformed
 
     private void btcarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcarritoActionPerformed
-
-        new Carrito(this.id).setVisible(true);
+        Carrito carrito = new Carrito(this.id);
+        carrito.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btcarritoActionPerformed
 

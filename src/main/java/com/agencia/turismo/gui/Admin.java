@@ -1,7 +1,13 @@
 package com.agencia.turismo.gui;
 
 public class Admin extends javax.swing.JFrame {
-    public Admin() {
+    int id; 
+    public Admin(int id) {
+        this.id = id;
+        initComponents();
+    }
+    
+    public Admin( ) {
         initComponents();
     }
 
@@ -97,7 +103,7 @@ public class Admin extends javax.swing.JFrame {
         getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 200, -1));
 
         CBEleccion1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        CBEleccion1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vuelos", "Tours", "Hoteles", "Cuentas" }));
+        CBEleccion1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vuelos", "Tours", "Hoteles" }));
         CBEleccion1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBEleccion1ActionPerformed(evt);
@@ -105,7 +111,12 @@ public class Admin extends javax.swing.JFrame {
         });
         getContentPane().add(CBEleccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 170, -1));
 
-        jButton4.setText("VER USUARIOS");
+        jButton4.setText("VER EMPLEADOS");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, -1, -1));
 
         pack();
@@ -119,6 +130,11 @@ public class Admin extends javax.swing.JFrame {
     private void CBEleccion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBEleccion1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CBEleccion1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        new AdimUser(this.id).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.mariadb.jdbc.Connection;
 
@@ -188,5 +189,75 @@ public class AgregarCarrito {
             return false;
         }
     }
+    
+    public void mostarReservas(int accountId, JTable tabla) {
+    String query = "SELECT \n" +
+        "    'tours' AS Tipo,\n" +
+        "    t.name AS Nombre,\n" +
+        "    bd.booking_date AS FechaReserva,\n" +
+        "    bd.return_date AS FechaRegreso,\n" +
+        "    bd.pagado AS Pagado,\n" +
+        "    t.price AS Precio\n" +
+        "FROM tours t\n" +
+        "INNER JOIN booking b ON b.tour_id = t.id\n" +
+        "INNER JOIN booking_dates bd ON b.dates_id = bd.id\n" +
+        "WHERE b.account_id = ?\n" +
+        "\n" +
+        "UNION\n" +
+        "\n" +
+        "SELECT \n" +
+        "    'hotels' AS Tipo,\n" +
+        "    h.name AS Nombre,\n" +
+        "    bd.booking_date AS FechaReserva,\n" +
+        "    bd.return_date AS FechaRegreso,\n" +
+        "    bd.pagado AS Pagado,\n" +
+        "    h.price AS Precio\n" +
+        "FROM hotels h\n" +
+        "INNER JOIN booking b ON b.hotel_id = h.id\n" +
+        "INNER JOIN booking_dates bd ON b.dates_id = bd.id\n" +
+        "WHERE b.account_id = ?\n" +
+        "\n" +
+        "UNION\n" +
+        "\n" +
+        "SELECT \n" +
+        "    'airlines' AS Tipo,\n" +
+        "    a.name AS Nombre,\n" +
+        "    bd.booking_date AS FechaReserva,\n" +
+        "    bd.return_date AS FechaRegreso,\n" +
+        "    bd.pagado AS Pagado,\n" +
+        "    a.price AS Precio\n" +
+        "FROM airlines a\n" +
+        "INNER JOIN booking b ON b.airline_id = a.id\n" +
+        "INNER JOIN booking_dates bd ON b.dates_id = bd.id\n" +
+        "WHERE b.account_id = ?";
+
+    String[] columnNames = {"Tipo", "Nombre", "FechaReserva", "FechaRegreso", "Pagado", "Precio"};
+    DefaultTableModel model = new DefaultTableModel();
+    model.setColumnIdentifiers(columnNames);
+
+    try (PreparedStatement pst = mdbc.getConn().prepareStatement(query)) {
+        pst.setInt(1, accountId);
+        pst.setInt(2, accountId);
+        pst.setInt(3, accountId);
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            String tipo = rs.getString("Tipo");
+            String nombre = rs.getString("Nombre");
+            String fechaReserva = rs.getString("FechaReserva");
+            String fechaRegreso = rs.getString("FechaRegreso");
+            String pagado = rs.getString("Pagado");
+            String precio = rs.getString("Precio");
+
+            Object[] datos = {tipo, nombre, fechaReserva, fechaRegreso, pagado, precio};
+            model.addRow(datos);
+        }
+
+        tabla.setModel(model);
+    } catch (SQLException e) {
+        System.out.println("No se pudo obtener el carrito: " + e);
+    }
+}
+
 
 }

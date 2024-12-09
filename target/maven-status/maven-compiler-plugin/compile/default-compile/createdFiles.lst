@@ -38,6 +38,7 @@ com\agencia\turismo\service\Admintrador.class
 com\agencia\turismo\gui\Vuelos.class
 com\agencia\turismo\gui\Hotel$3.class
 com\agencia\turismo\gui\Reserva$3.class
+com\agencia\turismo\gui\Carrito$7.class
 com\agencia\turismo\gui\Login$1.class
 com\agencia\turismo\gui\Vuelos$2.class
 com\agencia\turismo\gui\Vuelos$1.class
