@@ -20,7 +20,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BCerrarSesion = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -39,6 +39,7 @@ public class Admin extends javax.swing.JFrame {
         precio = new javax.swing.JTextField();
         CBEleccion1 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(812, 450));
@@ -65,8 +66,13 @@ public class Admin extends javax.swing.JFrame {
         jButton2.setText("AGREGAR");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, -1, -1));
 
-        jButton3.setText("ELIMINAR");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, -1, -1));
+        BCerrarSesion.setText("Cerrar Sesion");
+        BCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BCerrarSesionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, -1, -1));
 
         jLabel3.setText("Fecha de creacion");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
@@ -117,7 +123,10 @@ public class Admin extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, -1, -1));
+
+        jButton5.setText("ELIMINAR");
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -136,6 +145,11 @@ public class Admin extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void BCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCerrarSesionActionPerformed
+        new Inicio().setVisible(true); 
+        this.setVisible(false);
+    }//GEN-LAST:event_BCerrarSesionActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -145,12 +159,13 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BCerrarSesion;
     private javax.swing.JComboBox<String> CBEleccion1;
     private javax.swing.JComboBox<String> CBEleccion2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

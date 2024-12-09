@@ -3,6 +3,7 @@ package com.agencia.turismo.gui;
 import com.agencia.turismo.gui.Registro;
 import com.agencia.turismo.service.Ingresar;
 public class Login extends javax.swing.JFrame {
+    int id;
  Ingresar ingresar = new Ingresar(); 
     public Login() {
         initComponents();
@@ -19,7 +20,6 @@ public class Login extends javax.swing.JFrame {
         contrasena = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         BIniciarSesion = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         BRregresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -37,7 +37,7 @@ public class Login extends javax.swing.JFrame {
         usuario.setRows(5);
         jScrollPane1.setViewportView(usuario);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 300, 40));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 300, 40));
 
         jLabel3.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -48,7 +48,7 @@ public class Login extends javax.swing.JFrame {
         contrasena.setRows(5);
         jScrollPane2.setViewportView(contrasena);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 300, 40));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 300, 40));
 
         jLabel4.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -62,11 +62,7 @@ public class Login extends javax.swing.JFrame {
                 BIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(BIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 170, 30));
-
-        jButton2.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        jButton2.setText("OLVIDASTE TU CONTRASEÑA");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 260, 30));
+        getContentPane().add(BIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 170, 30));
 
         jButton3.setText("!!REGISTRARSE AHORA!!");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +70,7 @@ public class Login extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 240, 30));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 240, 30));
 
         BRregresar.setText("REGRESAR");
         BRregresar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,12 +97,18 @@ public class Login extends javax.swing.JFrame {
        
         String user = usuario.getText();
         String pass = contrasena.getText();
-        
+    
+        // Call checkLogin method to validate credentials
         boolean result = ingresar.checkLogin(user, pass);
-        ingresar.showLoginResult(result);
-        if(result){
-            this.setVisible(false);
-        }
+        this.id =ingresar.getId(); 
+    
+        // Show the result of login attempt
+    ingresar.showLoginResult(result);
+    
+    // If login was successful, hide the current form
+    if (result) {
+        this.setVisible(false);
+    }
     }//GEN-LAST:event_BIniciarSesionActionPerformed
 
     private void BRregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRregresarActionPerformed
@@ -154,7 +156,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton BIniciarSesion;
     private javax.swing.JButton BRregresar;
     private javax.swing.JTextArea contrasena;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

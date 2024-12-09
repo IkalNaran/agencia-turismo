@@ -49,7 +49,7 @@ AgregarCarrito carrito = new AgregarCarrito();
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Carrito");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 100, 80));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 50));
 
         bRegresar.setText("Regresar");
         bRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -65,11 +65,11 @@ AgregarCarrito carrito = new AgregarCarrito();
                 btReservacionesActionPerformed(evt);
             }
         });
-        getContentPane().add(btReservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, -1, -1));
+        getContentPane().add(btReservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, -1, -1));
 
         jScrollPane1.setViewportView(tabla1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 620, 280));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 620, 280));
 
         jButton1.setBackground(new java.awt.Color(102, 255, 102));
         jButton1.setText("Pagar");
@@ -116,7 +116,6 @@ AgregarCarrito carrito = new AgregarCarrito();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReservacionesActionPerformed
-
         mc.mostarReservas(id, tabla1);
     }//GEN-LAST:event_btReservacionesActionPerformed
 
@@ -126,7 +125,12 @@ AgregarCarrito carrito = new AgregarCarrito();
     }//GEN-LAST:event_bRegresarActionPerformed
 
     private void bteliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bteliminar1ActionPerformed
-        // TODO add your handling code here:
+        /*DELETE b
+FROM booking b
+INNER JOIN tours t ON b.tour_id = t.id
+WHERE t.name = 'Tour a Machu Picchu' AND b.account_id = 2;
+*/
+      
     }//GEN-LAST:event_bteliminar1ActionPerformed
 
     private void bteliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bteliminar2ActionPerformed
