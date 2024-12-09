@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class MariaDBConnection {
     private static final String user = "root";
-    private static final String pass = "rute";
-    private static final String url = "jdbc:mariadb://127.0.0.1:3306/exploitiz";
+    private static final String pass = "C0smopolis.";
+    private static final String url = "jdbc:mariadb://127.0.0.1:3307/exploitiz";
     private Connection conn;
     
     public MariaDBConnection() {

@@ -57,21 +57,9 @@ AgregarCarrito carrito = new AgregarCarrito();
         });
         getContentPane().add(btvaciarcarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
 
-        tabla1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Id", "Tipo de compra", "Nombre", "Precio"
-            }
-        ));
         jScrollPane1.setViewportView(tabla1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 620, 280));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 620, 280));
 
         jButton1.setBackground(new java.awt.Color(102, 255, 102));
         jButton1.setText("Pagar");
@@ -122,7 +110,7 @@ AgregarCarrito carrito = new AgregarCarrito();
     }//GEN-LAST:event_btvaciarcarritoActionPerformed
 
     private void bRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegresarActionPerformed
-        new Reserva().setVisible(true); 
+        new Reserva(this.id).setVisible(true); 
         this.setVisible(false);
     }//GEN-LAST:event_bRegresarActionPerformed
 

@@ -3,7 +3,7 @@ package com.agencia.turismo.gui;
 import com.agencia.turismo.service.Registrar;
 
 public class Registro extends javax.swing.JFrame {
-
+ 
     public Registro() {
         initComponents();
     }
@@ -109,47 +109,6 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtemailActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        /*if (txtnombre.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Nombre' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txtapellido.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Apellido' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txtemail.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Email' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txtedad.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Edad' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txttelefono.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Telefono' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txtdireccion.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Direccion' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txtusuario.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Usuario' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txtcontraseña.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Contraseña' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        javax.swing.JOptionPane.showMessageDialog(this, "Registro exitoso.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-        // Cerrar la ventana de registro
-        this.dispose();
-
-        // Abrir la ventana de login
-        //new Login().setVisible(true);
-        */
         String nombre = txtnombre.getText();
         String usuario = txtusuario.getText();
         char[] pass = txtcontrasena.getPassword();
@@ -163,7 +122,7 @@ public class Registro extends javax.swing.JFrame {
         Registrar  registrar = new Registrar(); 
         boolean reg = registrar.insertUsuario(nombre, apellido, edad, telefono, usuario, email, password);
         if(reg){
-            new Reserva().setVisible(true); 
+            new Login().setVisible(true); 
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed

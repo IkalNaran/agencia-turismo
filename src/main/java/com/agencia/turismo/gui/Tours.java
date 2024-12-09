@@ -140,7 +140,7 @@ Ingresar login;
     }//GEN-LAST:event_CBToursActionPerformed
 
     private void BRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegresarActionPerformed
-       new Reserva().setVisible(true);
+       new Reserva(this.id).setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_BRegresarActionPerformed
 
@@ -181,7 +181,7 @@ Ingresar login;
     private void BAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAgregarActionPerformed
         carrito.setId(this.id);
         carrito.setIdProducto("tours", nameTour);
-        carrito.insertBooking(selectedDate);
+        carrito.insertBookingTours(selectedDate);
     }//GEN-LAST:event_BAgregarActionPerformed
 
     /**
