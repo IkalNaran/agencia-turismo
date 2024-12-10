@@ -274,17 +274,5 @@ public class MostrarCarrito {
         return country;
     }
 }
-<<<<<<< HEAD
-=======
-public boolean modificarUsuario(String id, String user, String email, String password) {
-    // Implementación para actualizar en la base de datos
-    // Retorna true si la actualización fue exitosa, false en caso contrario.
-        return false;
-    // Implementación para actualizar en la base de datos
-    // Retorna true si la actualización fue exitosa, false en caso contrario.
-}
 
   
-
-}
->>>>>>> cda9731842b9bc0674522a0f6c16a32b6fc34796

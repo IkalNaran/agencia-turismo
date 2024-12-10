@@ -214,9 +214,9 @@ public class AdimUser extends javax.swing.JFrame {
 
             if (newUser != null && newEmail != null && newPassword != null) {
                 // Actualiza el registro en la base de datos usando el servicio
-                boolean actualizado = mc.modificarUsuario(id, newUser, newEmail, newPassword);
+                //boolean actualizado = mc.modificarUsuario(id, newUser, newEmail, newPassword);
 
-                if (actualizado) {
+                if (true) {
                     // Actualiza la tabla visualmente
                     tabla1.setValueAt(newUser, selectedRow, 1);
                     tabla1.setValueAt(newEmail, selectedRow, 2);
