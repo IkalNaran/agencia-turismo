@@ -1,24 +1,29 @@
 package com.agencia.turismo.gui;
 
+import com.agencia.turismo.service.AgregarCarrito;
 import com.agencia.turismo.service.Hoteles;
+import com.agencia.turismo.service.Ingresar;
+import com.toedter.calendar.JDateChooser;
+import java.awt.Dimension;
+import java.sql.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author ANDREA
- */
 public class Hotel extends javax.swing.JFrame {
- Hoteles ht = new Hoteles();
-    /**
-     * Creates new form HOTELES
-     */
+    Hoteles ht = new Hoteles();
+    int id ;
+    AgregarCarrito carrito = new AgregarCarrito();
+    Date selectedDate;
+    Date selectedDate2;
+    String nameHotel;
+    Ingresar login;
+ 
+    public Hotel(int id) {
+        this.id = id;
+        initComponents();
+    }
+    
     public Hotel() {
         initComponents();
     }
@@ -42,11 +47,14 @@ public class Hotel extends javax.swing.JFrame {
         pais = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         tipo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BRegresar = new javax.swing.JButton();
+        BAgregar = new javax.swing.JButton();
+        BFechaReserva = new javax.swing.JButton();
+        BFechaRegreso = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(812, 450));
@@ -85,27 +93,49 @@ public class Hotel extends javax.swing.JFrame {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
         getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 360, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Regresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BRegresar.setBackground(new java.awt.Color(0, 0, 0));
+        BRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        BRegresar.setText("Regresar");
+        BRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 120, 30));
+        getContentPane().add(BRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 120, 30));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Agregar");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 120, 30));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
+        BAgregar.setBackground(new java.awt.Color(0, 0, 0));
+        BAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        BAgregar.setText("Agregar");
+        BAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BAgregarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 120, 30));
+
+        BFechaReserva.setText("FECHA DE RESERVA");
+        BFechaReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BFechaReservaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BFechaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+
+        BFechaRegreso.setText("FECHA DE REGRESO");
+        BFechaRegreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BFechaRegresoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BFechaRegreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 810, 450));
 
         jLabel8.setText("Precio:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
         jLabel9.setText("Precio:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         pack();
         setLocationRelativeTo(null);
@@ -118,7 +148,7 @@ public class Hotel extends javax.swing.JFrame {
         for(String name: ht.getName() ){
             CBHotel.addItem(name);
         }
-        String nameHotel = (String) CBHotel.getSelectedItem();
+        this.nameHotel = (String) CBHotel.getSelectedItem();
         tipo.setText(ht.getType(nameHotel));
         direccion.setText(ht.getAddress(nameHotel));
         pais.setText(ht.getCountry(nameHotel));
@@ -130,10 +160,82 @@ public class Hotel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_direccionActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new Reserva().setVisible(true);
+    private void BRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegresarActionPerformed
+        new Reserva(this.id).setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BRegresarActionPerformed
+
+    private void BFechaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFechaReservaActionPerformed
+        JDateChooser dateChooser = new JDateChooser();
+        dateChooser.setDateFormatString("dd/MM/yyyy"); // Formato de la fecha
+        dateChooser.setPreferredSize(new Dimension(200, 30)); // Tamaño del componente
+
+        // Crear un JPanel para añadir el JDateChooser
+        JPanel panel = new JPanel();
+        panel.add(dateChooser);
+
+        // Mostrar el JDateChooser en un JOptionPane
+        int option = JOptionPane.showConfirmDialog(null, panel, "Selecciona una Fecha", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (option == JOptionPane.OK_OPTION) {
+            // Obtener la fecha seleccionada directamente como java.sql.Date
+            selectedDate = new Date(dateChooser.getDate().getTime()); // Convertir a java.sql.Date
+            if (selectedDate != null) {
+                // Mostrar la fecha seleccionada
+                JOptionPane.showMessageDialog(null, "Fecha seleccionada: " + selectedDate.toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "No se seleccionó ninguna fecha.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+        }
+
+        // Usar la fecha fuera del bloque if
+        if (selectedDate != null) {
+            System.out.println("La fecha seleccionada es: " + selectedDate);
+        } else {
+            System.out.println("No se seleccionó ninguna fecha.");
+        }
+    }//GEN-LAST:event_BFechaReservaActionPerformed
+
+    private void BFechaRegresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFechaRegresoActionPerformed
+        JDateChooser dateChooser = new JDateChooser();
+        dateChooser.setDateFormatString("dd/MM/yyyy"); // Formato de la fecha
+        dateChooser.setPreferredSize(new Dimension(200, 30)); // Tamaño del componente
+
+        // Crear un JPanel para añadir el JDateChooser
+        JPanel panel = new JPanel();
+        panel.add(dateChooser);
+
+        // Mostrar el JDateChooser en un JOptionPane
+        int option = JOptionPane.showConfirmDialog(null, panel, "Selecciona una Fecha", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (option == JOptionPane.OK_OPTION) {
+            // Obtener la fecha seleccionada directamente como java.sql.Date
+            selectedDate2 = new Date(dateChooser.getDate().getTime()); // Convertir a java.sql.Date
+            if (selectedDate2 != null) {
+                // Mostrar la fecha seleccionada
+                JOptionPane.showMessageDialog(null, "Fecha seleccionada: " + selectedDate2.toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "No se seleccionó ninguna fecha.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+        }
+
+        // Usar la fecha fuera del bloque if
+        if (selectedDate2 != null) {
+            System.out.println("La fecha seleccionada es: " + selectedDate2);
+        } else {
+            System.out.println("No se seleccionó ninguna fecha.");
+        }
+    }//GEN-LAST:event_BFechaRegresoActionPerformed
+
+    private void BAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAgregarActionPerformed
+        carrito.setId(this.id);
+        carrito.setIdProducto("hotels", nameHotel);
+        carrito.insertBookingHoteles(selectedDate,selectedDate2);
+    }//GEN-LAST:event_BAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,15 +274,18 @@ public class Hotel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BAgregar;
+    private javax.swing.JButton BFechaRegreso;
+    private javax.swing.JButton BFechaReserva;
+    private javax.swing.JButton BRegresar;
     private javax.swing.JComboBox<String> CBHotel;
     private javax.swing.JTextField direccion;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

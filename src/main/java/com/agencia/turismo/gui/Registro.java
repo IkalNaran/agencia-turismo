@@ -3,7 +3,7 @@ package com.agencia.turismo.gui;
 import com.agencia.turismo.service.Registrar;
 
 public class Registro extends javax.swing.JFrame {
-
+ 
     public Registro() {
         initComponents();
     }
@@ -33,6 +33,8 @@ public class Registro extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         txtcontrasena = new javax.swing.JPasswordField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(812, 450));
@@ -95,6 +97,8 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, -1, -1));
         getContentPane().add(txtcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, 120, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, 90));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 450));
 
         pack();
         setLocationRelativeTo(null);
@@ -105,47 +109,6 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtemailActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        /*if (txtnombre.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Nombre' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txtapellido.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Apellido' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txtemail.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Email' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txtedad.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Edad' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txttelefono.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Telefono' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txtdireccion.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Direccion' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txtusuario.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Usuario' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (txtcontraseña.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "El campo 'Contraseña' es obligatorio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        javax.swing.JOptionPane.showMessageDialog(this, "Registro exitoso.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-        // Cerrar la ventana de registro
-        this.dispose();
-
-        // Abrir la ventana de login
-        //new Login().setVisible(true);
-        */
         String nombre = txtnombre.getText();
         String usuario = txtusuario.getText();
         char[] pass = txtcontrasena.getPassword();
@@ -159,7 +122,7 @@ public class Registro extends javax.swing.JFrame {
         Registrar  registrar = new Registrar(); 
         boolean reg = registrar.insertUsuario(nombre, apellido, edad, telefono, usuario, email, password);
         if(reg){
-            new Reserva().setVisible(true); 
+            new Login().setVisible(true); 
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -210,7 +173,9 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

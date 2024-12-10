@@ -1,15 +1,20 @@
 package com.agencia.turismo.service;
 
 import com.agencia.turismo.repository.MariaDBConnection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
+import org.mariadb.jdbc.Connection;
 
 public class Tour {
     private MariaDBConnection mdbc = new MariaDBConnection();
     private List<String> hotelNames = new ArrayList<>();
+    private int id_tour; 
     
     public void setName(){
         String query = "SELECT name FROM tours";
@@ -126,7 +131,56 @@ public class Tour {
         } catch (SQLException e) {
             System.out.println("No se puedo obtener el precio: " + e);
             return "";
-        }
+        } 
+    }
+    
+    public boolean agregar(String name, Date fecha, int idUser, int idTour){
+        String query = "INSERT INTO booking_dates(booking_date) VALUES (?)";
+        String query2 = "INSERT INTO booking(account_id,tour_id) VALUES (?,?')";
+        Connection conn = mdbc.getConn();
         
+        try {
+            conn.setAutoCommit(false); // Desactivar el auto-commit para manejar la transacción manualmente
+
+            try (PreparedStatement pdstClients = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+                    PreparedStatement pdstUsers = conn.prepareStatement(query2, Statement.RETURN_GENERATED_KEYS)) {
+
+                // Insertar en la tabla clients
+                pdstClients.setDate(1, fecha);
+                pdstClients.executeUpdate();
+
+                // Insertar en la tabla users
+                pdstUsers.setInt(1, idUser);
+                pdstUsers.setInt(2, idTour);
+
+                pdstUsers.executeUpdate();
+                
+                ResultSet generatedKeysClient = pdstClients.getGeneratedKeys();
+                ResultSet generatedKeysUser = pdstUsers.getGeneratedKeys();
+                if (generatedKeysClient.next() && generatedKeysUser.next()) {
+                    int clientId = generatedKeysClient.getInt(1);
+                    int userId = generatedKeysUser.getInt(1);
+
+                    // Insertar en la tabla accounts
+                    //pdstUnion.setInt(1, userId);
+                    //pdstUnion.setInt(2, clientId); 
+                    //pdstUnion.executeUpdate();
+                }
+                
+                conn.commit(); // Confirmar la transacción
+                JOptionPane.showMessageDialog(null, "Se a registrado correctamente!" );
+                return true;
+            } catch (SQLException e) {
+                conn.rollback(); // Deshacer la transacción en caso de error
+                System.out.println();
+                JOptionPane.showMessageDialog(null, "Error al registrarte: " + e);
+                return false;
+            } finally {
+                conn.setAutoCommit(true); // Restaurar el auto-commit
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión: " + e);
+            return false;
+        }
     }
 }

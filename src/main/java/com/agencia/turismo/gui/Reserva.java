@@ -2,8 +2,13 @@ package com.agencia.turismo.gui;
 
 
 public class Reserva extends javax.swing.JFrame {
+int id; 
 
-    
+    public Reserva(int id) {
+        this.id = id;
+        initComponents();
+    }
+
     public Reserva() {
         initComponents();
     }
@@ -21,6 +26,7 @@ public class Reserva extends javax.swing.JFrame {
         btcarrito = new javax.swing.JButton();
         btcerrarsesion = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(812, 450));
@@ -65,6 +71,8 @@ public class Reserva extends javax.swing.JFrame {
         });
         getContentPane().add(btsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, -1, -1));
 
+        btcarrito.setMnemonic('c');
+        btcarrito.setText("carrito");
         btcarrito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btcarritoActionPerformed(evt);
@@ -80,29 +88,30 @@ public class Reserva extends javax.swing.JFrame {
         });
         getContentPane().add(btcerrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, -1, -1));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bthotelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bthotelesActionPerformed
-        new Hotel().setVisible(true);
+        new Hotel(this.id).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bthotelesActionPerformed
 
     private void btvuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btvuelosActionPerformed
-        new Vuelos().setVisible(true);
+        new Vuelos(this.id).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btvuelosActionPerformed
 
     private void bttoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttoursActionPerformed
-        new Tours().setVisible(true);
+        new Tours(this.id).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bttoursActionPerformed
 
     private void btcarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcarritoActionPerformed
-
-        new Carrito().setVisible(true);
+        Carrito carrito = new Carrito(this.id);
+        carrito.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btcarritoActionPerformed
 
@@ -156,6 +165,7 @@ public class Reserva extends javax.swing.JFrame {
     private javax.swing.JButton btsalir;
     private javax.swing.JButton bttours;
     private javax.swing.JButton btvuelos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables

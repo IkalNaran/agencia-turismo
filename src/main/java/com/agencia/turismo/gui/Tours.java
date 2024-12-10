@@ -1,20 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.agencia.turismo.gui;
 
+import com.agencia.turismo.service.AgregarCarrito;
+import com.agencia.turismo.service.Ingresar;
 import com.agencia.turismo.service.Tour;
+import com.toedter.calendar.JDateChooser;
+import java.awt.Dimension;
+import java.sql.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-/**
- *
- * @author Dana Gonzalez
- */
 public class Tours extends javax.swing.JFrame {
 Tour tour = new Tour();
-    /**
-     * Creates new form Tours
-     */
+int id; 
+AgregarCarrito carrito = new AgregarCarrito();
+Date selectedDate;
+String nameTour;
+Ingresar login;
+
+    public Tours(int id) {
+        this.id = id;
+        initComponents();
+    }
     public Tours() {
         initComponents();
     }
@@ -40,7 +46,9 @@ Tour tour = new Tour();
         duracion = new javax.swing.JTextField();
         destino = new javax.swing.JTextField();
         precio = new javax.swing.JTextField();
+        reservaFecha = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(812, 450));
@@ -75,7 +83,7 @@ Tour tour = new Tour();
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel6.setText("Precio");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, -1, -1));
 
         BRegresar.setBackground(new java.awt.Color(0, 0, 0));
         BRegresar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -92,12 +100,26 @@ Tour tour = new Tour();
         BAgregar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         BAgregar.setForeground(new java.awt.Color(255, 255, 255));
         BAgregar.setText("Agregar");
+        BAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BAgregarActionPerformed(evt);
+            }
+        });
         getContentPane().add(BAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, -1, -1));
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, -1, -1));
         getContentPane().add(duracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 260, -1));
         getContentPane().add(destino, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 260, -1));
-        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 160, -1));
+        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 160, -1));
+
+        reservaFecha.setText("FECHA RESERVA");
+        reservaFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reservaFechaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(reservaFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, -1, -1));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         pack();
         setLocationRelativeTo(null);
@@ -110,7 +132,7 @@ Tour tour = new Tour();
             CBTours.addItem(name);
         }
         
-        String nameTour = (String) CBTours.getSelectedItem();
+        this.nameTour = (String) CBTours.getSelectedItem();
         descripcion.setText(tour.getDescription(nameTour));
         duracion.setText(tour.getDuration(nameTour));
         destino.setText(tour.getDestiny(nameTour));
@@ -118,9 +140,49 @@ Tour tour = new Tour();
     }//GEN-LAST:event_CBToursActionPerformed
 
     private void BRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegresarActionPerformed
-       new Reserva().setVisible(true);
+       new Reserva(this.id).setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_BRegresarActionPerformed
+
+    private void reservaFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservaFechaActionPerformed
+        JDateChooser dateChooser = new JDateChooser();
+        dateChooser.setDateFormatString("dd/MM/yyyy"); // Formato de la fecha
+        dateChooser.setPreferredSize(new Dimension(200, 30)); // Tamaño del componente
+
+        // Crear un JPanel para añadir el JDateChooser
+        JPanel panel = new JPanel();
+        panel.add(dateChooser);
+
+        // Mostrar el JDateChooser en un JOptionPane
+        int option = JOptionPane.showConfirmDialog(null, panel, "Selecciona una Fecha", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (option == JOptionPane.OK_OPTION) {
+            // Obtener la fecha seleccionada directamente como java.sql.Date
+            selectedDate = new Date(dateChooser.getDate().getTime()); // Convertir a java.sql.Date
+            if (selectedDate != null) {
+                // Mostrar la fecha seleccionada
+                JOptionPane.showMessageDialog(null, "Fecha seleccionada: " + selectedDate.toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "No se seleccionó ninguna fecha.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+        }
+
+        // Usar la fecha fuera del bloque if
+        if (selectedDate != null) {
+            System.out.println("La fecha seleccionada es: " + selectedDate);
+        } else {
+            System.out.println("No se seleccionó ninguna fecha.");
+        }
+
+    }//GEN-LAST:event_reservaFechaActionPerformed
+
+    private void BAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAgregarActionPerformed
+        carrito.setId(this.id);
+        carrito.setIdProducto("tours", nameTour);
+        carrito.insertBookingTours(selectedDate);
+    }//GEN-LAST:event_BAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,8 +231,10 @@ Tour tour = new Tour();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField precio;
+    private javax.swing.JButton reservaFecha;
     // End of variables declaration//GEN-END:variables
 }
