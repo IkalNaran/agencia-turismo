@@ -131,11 +131,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="ELIMINAR"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BEliminarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BModificar1">
       <Properties>
         <Property name="text" type="java.lang.String" value="MODIFICAR"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BModificar1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BMostrar">
       <Properties>
@@ -190,6 +196,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="MODIFICAR"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BModificarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

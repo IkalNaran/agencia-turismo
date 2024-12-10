@@ -56,8 +56,18 @@ public class AdimUser extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabla1);
 
         BEliminar.setText("ELIMINAR");
+        BEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BEliminarActionPerformed(evt);
+            }
+        });
 
         BModificar1.setText("MODIFICAR");
+        BModificar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BModificar1ActionPerformed(evt);
+            }
+        });
 
         BMostrar.setText("MOSTRAR");
         BMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +104,11 @@ public class AdimUser extends javax.swing.JFrame {
         jScrollPane2.setViewportView(table2);
 
         BModificar.setText("MODIFICAR");
+        BModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,6 +192,58 @@ public class AdimUser extends javax.swing.JFrame {
     private void BRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegresarActionPerformed
         new Admin(this.id).setVisible(true);
     }//GEN-LAST:event_BRegresarActionPerformed
+
+    private void BModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BModificar1ActionPerformed
+        // TODO add your handling code here:
+        // Obtiene la fila seleccionada
+    int selectedRow = tabla1.getSelectedRow();
+    
+    if (selectedRow != -1) { // Verifica si se seleccionó una fila
+        try {
+            // Obtiene los valores de la fila seleccionada
+            String id = tabla1.getValueAt(selectedRow, 0).toString();
+            String user = tabla1.getValueAt(selectedRow, 1).toString();
+            String email = tabla1.getValueAt(selectedRow, 2).toString();
+            String password = tabla1.getValueAt(selectedRow, 3).toString();
+            String fechaCreacion = tabla1.getValueAt(selectedRow, 4).toString();
+
+            // Muestra un cuadro de diálogo para modificar los valores
+            String newUser = javax.swing.JOptionPane.showInputDialog(this, "Modificar usuario:", user);
+            String newEmail = javax.swing.JOptionPane.showInputDialog(this, "Modificar email:", email);
+            String newPassword = javax.swing.JOptionPane.showInputDialog(this, "Modificar contraseña:", password);
+
+            if (newUser != null && newEmail != null && newPassword != null) {
+                // Actualiza el registro en la base de datos usando el servicio
+                boolean actualizado = mc.modificarUsuario(id, newUser, newEmail, newPassword);
+
+                if (actualizado) {
+                    // Actualiza la tabla visualmente
+                    tabla1.setValueAt(newUser, selectedRow, 1);
+                    tabla1.setValueAt(newEmail, selectedRow, 2);
+                    tabla1.setValueAt(newPassword, selectedRow, 3);
+
+                    javax.swing.JOptionPane.showMessageDialog(this, "Usuario modificado exitosamente.");
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Error al modificar el usuario.");
+                }
+            }
+        } catch (Exception ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error: " + ex.getMessage());
+        }
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un registro para modificar.");
+    }
+    }//GEN-LAST:event_BModificar1ActionPerformed
+
+    private void BEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEliminarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BEliminarActionPerformed
+
+    private void BModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BModificarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BModificarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Konos\Documents\Workspace\Java\Projects\agencia-turismo\src\main\java\com\agencia\turismo\gui\AdimUser.java
 C:\Users\Konos\Documents\Workspace\Java\Projects\agencia-turismo\src\main\java\com\agencia\turismo\gui\Admin.java
 C:\Users\Konos\Documents\Workspace\Java\Projects\agencia-turismo\src\main\java\com\agencia\turismo\gui\Carrito.java
@@ -17,3 +18,44 @@ C:\Users\Konos\Documents\Workspace\Java\Projects\agencia-turismo\src\main\java\c
 C:\Users\Konos\Documents\Workspace\Java\Projects\agencia-turismo\src\main\java\com\agencia\turismo\service\Registrar.java
 C:\Users\Konos\Documents\Workspace\Java\Projects\agencia-turismo\src\main\java\com\agencia\turismo\service\Tour.java
 C:\Users\Konos\Documents\Workspace\Java\Projects\agencia-turismo\src\main\java\com\agencia\turismo\service\Vuelo.java
+=======
+<<<<<<< HEAD
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\gui\Admin.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\gui\Carrito.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\gui\Hotel.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\gui\Inicio.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\gui\Login.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\gui\Registro.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\gui\Reserva.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\gui\Tours.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\gui\Vuelos.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\repository\MariaDBConnection.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\service\Admin.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\service\Clientes.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\service\Hoteles.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\service\Ingresar.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\service\Registrar.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\service\Tour.java
+C:\Users\Konos\Documents\NetBeansProjects\agencia-turismo\src\main\java\com\agencia\turismo\service\Vuelo.java
+=======
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\service\Ingresar.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\repository\MariaDBConnection.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\gui\Inicio.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\service\Tour.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\service\Vuelo.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\gui\Hotel.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\gui\Carrito.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\gui\Login.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\service\Registrar.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\gui\Admin.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\gui\Vuelos.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\service\AgregarCarrito.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\gui\AdimUser.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\gui\Registro.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\service\MostrarCarrito.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\gui\Reserva.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\gui\Tours.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\service\Admintrador.java
+C:\Users\Jefem\OneDrive\Documents\agencia-turismo\src\main\java\com\agencia\turismo\service\Hoteles.java
+>>>>>>> e5b8e595c05efa54c7e3eedf3c13cd79217645b8
+>>>>>>> cda9731842b9bc0674522a0f6c16a32b6fc34796
