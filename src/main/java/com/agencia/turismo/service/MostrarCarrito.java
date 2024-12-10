@@ -118,6 +118,13 @@ public class MostrarCarrito {
         System.out.println("No se pudo consultar reservas: " + e.getMessage());
     }
 }
+public boolean modificarUsuario(String id, String user, String email, String password) {
+    // Implementación para actualizar en la base de datos
+    // Retorna true si la actualización fue exitosa, false en caso contrario.
+        return false;
+    // Implementación para actualizar en la base de datos
+    // Retorna true si la actualización fue exitosa, false en caso contrario.
+}
 
   
 
