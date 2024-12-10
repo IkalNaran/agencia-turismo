@@ -1,7 +1,10 @@
 com\agencia\turismo\gui\Inicio$1.class
 com\agencia\turismo\gui\Registro$1.class
+<<<<<<< HEAD
+=======
 com\agencia\turismo\gui\AdimUser$2.class
 com\agencia\turismo\gui\Tours$5.class
+>>>>>>> e5b8e595c05efa54c7e3eedf3c13cd79217645b8
 com\agencia\turismo\gui\Login$4.class
 com\agencia\turismo\gui\Inicio.class
 com\agencia\turismo\service\Vuelo.class
@@ -70,4 +73,9 @@ com\agencia\turismo\gui\Admin$3.class
 com\agencia\turismo\gui\Carrito$2.class
 com\agencia\turismo\gui\Registro$3.class
 com\agencia\turismo\gui\Reserva$1.class
+<<<<<<< HEAD
+com\agencia\turismo\service\Admin.class
+com\agencia\turismo\service\Clientes.class
+=======
 com\agencia\turismo\gui\AdimUser$4.class
+>>>>>>> e5b8e595c05efa54c7e3eedf3c13cd79217645b8
