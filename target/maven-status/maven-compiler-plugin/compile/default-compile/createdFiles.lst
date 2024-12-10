@@ -1,6 +1,5 @@
 com\agencia\turismo\gui\Inicio$1.class
 com\agencia\turismo\gui\Registro$1.class
-com\agencia\turismo\service\Cuentas.class
 com\agencia\turismo\gui\Login$4.class
 com\agencia\turismo\gui\Inicio.class
 com\agencia\turismo\service\Vuelo.class
@@ -50,4 +49,5 @@ com\agencia\turismo\gui\Hotel$1.class
 com\agencia\turismo\gui\Carrito$2.class
 com\agencia\turismo\gui\Registro$3.class
 com\agencia\turismo\gui\Reserva$1.class
+com\agencia\turismo\service\Admin.class
 com\agencia\turismo\service\Clientes.class
