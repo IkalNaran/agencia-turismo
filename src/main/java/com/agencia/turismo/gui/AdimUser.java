@@ -34,7 +34,6 @@ public class AdimUser extends javax.swing.JFrame {
         BMostrarReservaciones = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         table2 = new javax.swing.JTable();
-        BModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -103,13 +102,6 @@ public class AdimUser extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(table2);
 
-        BModificar.setText("MODIFICAR");
-        BModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BModificarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,8 +126,7 @@ public class AdimUser extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(BMostrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(BModificar1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(BEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BModificar, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                                    .addComponent(BEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -159,8 +150,6 @@ public class AdimUser extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BModificar)
-                        .addGap(18, 18, 18)
                         .addComponent(BRegresar)
                         .addGap(38, 38, 38)))
                 .addContainerGap(8, Short.MAX_VALUE))
@@ -240,11 +229,6 @@ public class AdimUser extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BEliminarActionPerformed
 
-    private void BModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BModificarActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_BModificarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -282,7 +266,6 @@ public class AdimUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BEliminar;
-    private javax.swing.JButton BModificar;
     private javax.swing.JButton BModificar1;
     private javax.swing.JButton BMostrar;
     private javax.swing.JButton BMostrarReservaciones;

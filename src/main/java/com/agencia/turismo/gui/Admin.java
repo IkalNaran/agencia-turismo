@@ -46,7 +46,7 @@ public class Admin extends javax.swing.JFrame {
         txtPrecio = new javax.swing.JTextField();
         CBEleccion1 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        BEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(812, 450));
@@ -76,6 +76,11 @@ public class Admin extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
 
         jButton2.setText("AGREGAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, -1, -1));
 
         BCerrarSesion.setText("Cerrar Sesion");
@@ -137,8 +142,13 @@ public class Admin extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, -1, -1));
 
-        jButton5.setText("ELIMINAR");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, -1, -1));
+        BEliminar.setText("ELIMINAR");
+        BEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BEliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -229,11 +239,37 @@ public class Admin extends javax.swing.JFrame {
         if( eleccion == "hotels"){ 
             mc.modificarHotel(txtName.getText(),txtAero.getText(),txtTipoVuelo.getText(), txtPais.getText(),txtPrecio.getText(), eleccion2);
         }else if (eleccion == "airlines"){
-            mc.modificarAir(txtName.getText(),txtAero.getText(),txtTipoVuelo.getText(), txtOrigen.getText(),txtFinal.getText() , txtPais.getText(),txtPrecio.getText(), eleccion2);
+            mc.modificarAir(txtName.getText(),txtTipoVuelo.getText(), txtOrigen.getText(),txtFinal.getText() , txtPais.getText(),txtPrecio.getText(), eleccion2);
         }else if (eleccion == "tours"){
-            mc.modificarTour(txtName.getText(),txtAero.getText(),txtTipoVuelo.getText(), txtOrigen.getText(), txtPais.getText(),txtPrecio.getText(), txtName.getText());
+            mc.modificarTour(txtName.getText(),txtAero.getText(),txtTipoVuelo.getText(), txtOrigen.getText(), txtPais.getText(),txtPrecio.getText(), eleccion2);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        eleccion = (String) CBEleccion1.getSelectedItem();
+        eleccion2 = (String) CBEleccion2.getSelectedItem();
+        
+        if( eleccion == "hotels"){ 
+            mc.agregarHotel(txtName.getText(),txtAero.getText(),txtTipoVuelo.getText(),txtPrecio.getText());
+        }else if (eleccion == "airlines"){
+            mc.agregarAir(txtName.getText(),txtAero.getText(),txtTipoVuelo.getText(), txtOrigen.getText(),txtFinal.getText(),txtPrecio.getText());
+        }else if (eleccion == "tours"){
+            mc.agregarTour(txtName.getText(),txtAero.getText(),txtTipoVuelo.getText(), txtOrigen.getText(),txtPrecio.getText());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void BEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEliminarActionPerformed
+        eleccion = (String) CBEleccion1.getSelectedItem();
+        eleccion2 = (String) CBEleccion2.getSelectedItem();
+        
+        if( eleccion == "hotels"){ 
+            mc.eliminarHotel(eleccion2);
+        }else if (eleccion == "airlines"){
+            mc.eliminarAir(eleccion2, txtAero.getText());
+        }else if (eleccion == "tours"){
+            mc.eliminarTour(eleccion2);
+        }
+    }//GEN-LAST:event_BEliminarActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -245,12 +281,12 @@ public class Admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BCerrarSesion;
+    private javax.swing.JButton BEliminar;
     private javax.swing.JComboBox<String> CBEleccion1;
     private javax.swing.JComboBox<String> CBEleccion2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel txt1;

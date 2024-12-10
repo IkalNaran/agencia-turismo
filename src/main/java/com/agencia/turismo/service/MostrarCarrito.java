@@ -272,9 +272,9 @@ public class MostrarCarrito {
     }
 
     
-    public void modificarTour(String name, String description, String duration, String destiny, String price,String country, String currentName){
-        String query = "UPDATE tours t" +
-            "JOIN country c ON c.name = ?" +
+    public void modificarTour(String name, String description, String duration, String destiny,String country, String price, String currentName){
+        String query = "UPDATE tours t " +
+            "JOIN country c ON c.name = ? " +
             "SET t.name = ?," +
             "    t.description = ?," +
             "    t.duration = ?," +
@@ -302,11 +302,10 @@ public class MostrarCarrito {
         }
     }
     
-    public void modificarAir(String name, String numberAirline, String typeAirline, String destinyOrigen, String destinyEnd,String country, String price,String currentName){
-        String query = "UPDATE airlines t" +
-            "JOIN country c ON c.name = ?" +
+    public void modificarAir(String name, String typeAirline, String destinyOrigen, String destinyEnd,String country, String price,String currentName){
+        String query = "UPDATE airlines t " +
+            "JOIN country c ON c.name = ? " +
             "SET t.name = ?," +
-            "    t.number_airline = ?," +
             "    t.type_airline = ?," +
             "    t.destiny_origin = ?," +
             "    t.destiny_end = ?," +
@@ -319,12 +318,11 @@ public class MostrarCarrito {
             // Asignar valores a los parámetros
             pdst.setString(1, country);
             pdst.setString(2, name);
-            pdst.setString(3, numberAirline);
-            pdst.setString(4, typeAirline);         
-            pdst.setString(5, destinyOrigen);  
-            pdst.setString(6, destinyEnd);
-            pdst.setString(7, price);
-            pdst.setString(8, currentName);
+            pdst.setString(3, typeAirline);         
+            pdst.setString(4, destinyOrigen);  
+            pdst.setString(5, destinyEnd);
+            pdst.setString(6, price);
+            pdst.setString(7, currentName);
 
             // Ejecutar la consulta
             int rowsAffected = pdst.executeUpdate();
@@ -335,21 +333,117 @@ public class MostrarCarrito {
     }
     
     
-    public void agregarTour(){
+    public void agregarTour(String name, String description, String duration, String destiny, String price){
+        String query = "INSERT INTO tours(name,DESCRIPTION,duration,destiny,price) VALUES (?,?,?,?,?)";
+        try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
+
+            // Asignar valores a los parámetros
+            pdst.setString(1, name);
+            pdst.setString(2, description);
+            pdst.setString(3, duration);         
+            pdst.setString(4, destiny);  
+            pdst.setString(5, price);
+
+            // Ejecutar la consulta
+            int rowsAffected = pdst.executeUpdate();
+            System.out.println("Filas actualizadas: " + rowsAffected);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void agregarHotel(String name, String description, String duration, String price){
+        String query = "INSERT INTO hotels(name,type_hotel,address,price) VALUES (?,?,?,?)";
+        try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
+
+            // Asignar valores a los parámetros
+            pdst.setString(1, name);
+            pdst.setString(2, description);
+            pdst.setString(3, duration);          
+            pdst.setString(4, price);
+
+            // Ejecutar la consulta
+            int rowsAffected = pdst.executeUpdate();
+            System.out.println("Filas actualizadas: " + rowsAffected);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         
     }
     
-    public void agregarHotel(){
+    public void agregarAir(String name, String numberAirline, String typeAirline, String destinyOrigin,String destinyEnd, String price){
+        String query = "INSERT INTO airlines(name,number_airline,type_airline,destiny_origin,destiny_end,price) VALUES (?,?,?,?,?,?)";
+        try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
+
+            // Asignar valores a los parámetros
+            pdst.setString(1, name);
+            pdst.setString(2, numberAirline);
+            pdst.setString(3, typeAirline);         
+            pdst.setString(4, destinyOrigin);
+            pdst.setString(5, destinyEnd);
+            pdst.setString(6, price);
+
+            // Ejecutar la consulta
+            int rowsAffected = pdst.executeUpdate();
+            System.out.println("Filas actualizadas: " + rowsAffected);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         
     }
     
-    public void agregarAir(){
+    public void eliminarTour(String name) {
+    String query = "DELETE FROM tours WHERE name = ?";
+    try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
+        pdst.setString(1, name);
+        int rowsAffected = pdst.executeUpdate();
         
+        if (rowsAffected > 0) {
+            System.out.println("El tour '" + name + "' fue eliminado correctamente.");
+        } else {
+            System.out.println("No se encontró ningún tour con el nombre: " + name);
+        }
+    } catch (SQLException e) {
+        System.err.println("Error al intentar eliminar el tour: " + name);
+        e.printStackTrace();
     }
+}
     
-    public void eliminarProducto(){
+    public void eliminarAir(String name, String numberAirline) {
+    String query = "DELETE FROM airlines WHERE name = ? AND number_airline = ?";
+    try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
+        pdst.setString(1, name);
+        pdst.setString(2, numberAirline);
+        int rowsAffected = pdst.executeUpdate();
         
+        if (rowsAffected > 0) {
+            System.out.println("La aerolínea '" + name + "' con número '" + numberAirline + "' fue eliminada correctamente.");
+        } else {
+            System.out.println("No se encontró ninguna aerolínea con el nombre '" + name + "' y número '" + numberAirline + "'.");
+        }
+    } catch (SQLException e) {
+        System.err.println("Error al intentar eliminar la aerolínea: " + name + " con número: " + numberAirline);
+        e.printStackTrace();
     }
+}
+
+    
+    public void eliminarHotel(String name) {
+    String query = "DELETE FROM hotels WHERE name = ?";
+    try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
+        pdst.setString(1, name);
+        int rowsAffected = pdst.executeUpdate();
+        
+        if (rowsAffected > 0) {
+            System.out.println("El hotel '" + name + "' fue eliminado correctamente.");
+        } else {
+            System.out.println("No se encontró ningún hotel con el nombre: '" + name + "'.");
+        }
+    } catch (SQLException e) {
+        System.err.println("Error al intentar eliminar el hotel: '" + name + "'.");
+        e.printStackTrace();
+    }
+}
 
 
     public String getName() {

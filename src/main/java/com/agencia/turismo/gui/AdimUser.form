@@ -48,7 +48,6 @@
                                   <Component id="BMostrar" alignment="1" min="-2" pref="93" max="-2" attributes="0"/>
                                   <Component id="BModificar1" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="BEliminar" alignment="1" min="-2" pref="93" max="-2" attributes="0"/>
-                                  <Component id="BModificar" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -82,8 +81,6 @@
                       <Component id="jScrollPane2" min="-2" pref="173" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="BModificar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="BRegresar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
@@ -192,13 +189,5 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="BModificar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="MODIFICAR"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BModificarActionPerformed"/>
-      </Events>
-    </Component>
   </SubComponents>
 </Form>
