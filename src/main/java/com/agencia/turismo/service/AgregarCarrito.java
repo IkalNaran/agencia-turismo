@@ -15,7 +15,8 @@ public class AgregarCarrito {
     MariaDBConnection mdbc = new MariaDBConnection();
     private int id; 
     private int idProductos;
-
+    private String tipo;
+    
     public AgregarCarrito() {
         
     }
@@ -192,7 +193,7 @@ public class AgregarCarrito {
     
     public void mostarReservas(int accountId, JTable tabla) {
     String query = "SELECT \n" +
-        "    'tours' AS Tipo,\n" +
+        "    'tour' AS Tipo,\n" +
         "    t.name AS Nombre,\n" +
         "    bd.booking_date AS FechaReserva,\n" +
         "    bd.return_date AS FechaRegreso,\n" +
@@ -206,7 +207,7 @@ public class AgregarCarrito {
         "UNION\n" +
         "\n" +
         "SELECT \n" +
-        "    'hotels' AS Tipo,\n" +
+        "    'hotel' AS Tipo,\n" +
         "    h.name AS Nombre,\n" +
         "    bd.booking_date AS FechaReserva,\n" +
         "    bd.return_date AS FechaRegreso,\n" +
@@ -220,7 +221,7 @@ public class AgregarCarrito {
         "UNION\n" +
         "\n" +
         "SELECT \n" +
-        "    'airlines' AS Tipo,\n" +
+        "    'airline' AS Tipo,\n" +
         "    a.name AS Nombre,\n" +
         "    bd.booking_date AS FechaReserva,\n" +
         "    bd.return_date AS FechaRegreso,\n" +
@@ -242,7 +243,7 @@ public class AgregarCarrito {
         ResultSet rs = pst.executeQuery();
 
         while (rs.next()) {
-            String tipo = rs.getString("Tipo");
+            tipo = rs.getString("Tipo");
             String nombre = rs.getString("Nombre");
             String fechaReserva = rs.getString("FechaReserva");
             String fechaRegreso = rs.getString("FechaRegreso");
@@ -258,6 +259,96 @@ public class AgregarCarrito {
         System.out.println("No se pudo obtener el carrito: " + e);
     }
 }
+    
+    public void deleteCarrito(String tabla, String columna, String idProducto, int idaccount) {
+    // Validar que los nombres de tabla y columna sean seguros
+    if (!tabla.matches("[a-zA-Z0-9_]+") || !columna.matches("[a-zA-Z0-9_]+")) {
+        throw new IllegalArgumentException("Nombre de tabla o columna inválido");
+    }
 
+    // Construir la consulta con nombres de tabla y columna
+    String sql = "DELETE b FROM booking b "
+               + "INNER JOIN " + tabla + " t ON b." + columna + "_id = t.id "
+               + "WHERE t.name = ? AND b.account_id = ?";
 
+    try (PreparedStatement pst = mdbc.getConn().prepareStatement(sql)) {
+        // Asignar valores a los parámetros
+        pst.setString(1, idProducto);
+        pst.setInt(2, idaccount);
+
+        int rowsAffected = pst.executeUpdate();
+        System.out.println("Rows affected: " + rowsAffected);
+
+    } catch (SQLException e) {
+        System.out.println("Error al eliminar: " + e.toString());
+    }
+}
+
+    public double mostrarTotal(int accountId) {
+        String query = "SELECT SUM(Precio) AS Total\n" +
+                "FROM (\n" +
+                "    SELECT t.price AS Precio\n" +
+                "    FROM tours t\n" +
+                "    INNER JOIN booking b ON b.tour_id = t.id\n" +
+                "    INNER JOIN booking_dates bd ON b.dates_id = bd.id\n" +
+                "    WHERE b.account_id = ?\n" +
+                "    \n" +
+                "    UNION ALL\n" +
+                "    \n" +
+                "    SELECT h.price AS Precio\n" +
+                "    FROM hotels h\n" +
+                "    INNER JOIN booking b ON b.hotel_id = h.id\n" +
+                "    INNER JOIN booking_dates bd ON b.dates_id = bd.id\n" +
+                "    WHERE b.account_id = ?\n" +
+                "    \n" +
+                "    UNION ALL\n" +
+                "    \n" +
+                "    SELECT a.price AS Precio\n" +
+                "    FROM airlines a\n" +
+                "    INNER JOIN booking b ON b.airline_id = a.id\n" +
+                "    INNER JOIN booking_dates bd ON b.dates_id = bd.id\n" +
+                "    WHERE b.account_id = ?\n" +
+                ") AS TotalPrecios;";
+
+        try (PreparedStatement pst = mdbc.getConn().prepareStatement(query)) {
+            pst.setInt(1, accountId);
+            pst.setInt(2, accountId);
+            pst.setInt(3, accountId);
+            ResultSet rs = pst.executeQuery();
+
+            // Verificar si hay resultados
+            if (rs.next()) {
+                return rs.getDouble("Total"); // Accede al alias correcto
+            } else {
+                return 0.0; // Si no hay resultados, retorna 0
+            }
+        } catch (SQLException e) {
+            System.out.println("No se pudo obtener el total: " + e.getMessage());
+            return 0.0;
+        }
+    }
+    
+    public void pagar(String tabla, String columna, int id, String nombre) {
+        String query = "UPDATE booking_dates bd\n" +
+                       "INNER JOIN booking b ON b.dates_id = bd.id\n" +
+                       "INNER JOIN " + tabla + " t ON b." + columna + "_id = t.id\n" +
+                       "SET bd.pagado = 'SI'\n" +
+                       "WHERE b.account_id = ? AND t.name = ?";
+
+        try (PreparedStatement pst = mdbc.getConn().prepareStatement(query)) {
+            pst.setInt(1, id); 
+            pst.setString(2, nombre); 
+            
+            int rowsAffected = pst.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("La reserva ha sido marcada como pagada.");
+            } else {
+                System.out.println("No se encontró ninguna reserva para actualizar.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al marcar como pagado: " + e.getMessage());
+        }
+    }
+
+    
 }

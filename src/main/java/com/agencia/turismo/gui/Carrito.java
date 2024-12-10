@@ -7,6 +7,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class Carrito extends javax.swing.JFrame {
 int id;
+String columna;
+String produto;
 AgregarCarrito mc = new AgregarCarrito();
 
 AgregarCarrito carrito = new AgregarCarrito();
@@ -30,14 +32,10 @@ AgregarCarrito carrito = new AgregarCarrito();
         btReservaciones = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        bteliminar1 = new javax.swing.JButton();
-        bteliminar2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        BPagar = new javax.swing.JButton();
+        bteliminar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btvaciarcarrito1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(812, 450));
@@ -57,7 +55,7 @@ AgregarCarrito carrito = new AgregarCarrito();
                 bRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(bRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, -1, -1));
+        getContentPane().add(bRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
         btReservaciones.setText("Mostrar Reservaciones");
         btReservaciones.addActionListener(new java.awt.event.ActionListener() {
@@ -71,45 +69,24 @@ AgregarCarrito carrito = new AgregarCarrito();
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 620, 280));
 
-        jButton1.setBackground(new java.awt.Color(102, 255, 102));
-        jButton1.setText("Pagar");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, -1, -1));
-
-        bteliminar1.setText("Eliminar");
-        bteliminar1.addActionListener(new java.awt.event.ActionListener() {
+        BPagar.setBackground(new java.awt.Color(102, 255, 102));
+        BPagar.setText("Pagar");
+        BPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bteliminar1ActionPerformed(evt);
+                BPagarActionPerformed(evt);
             }
         });
-        getContentPane().add(bteliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, -1));
+        getContentPane().add(BPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, -1, -1));
 
-        bteliminar2.setText("Eliminar");
-        bteliminar2.addActionListener(new java.awt.event.ActionListener() {
+        bteliminar.setText("Eliminar");
+        bteliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bteliminar2ActionPerformed(evt);
+                bteliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(bteliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, -1));
-
-        jLabel1.setText("TOTAL");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, -1, -1));
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 330, 130, -1));
+        getContentPane().add(bteliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, -1, -1));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
-
-        btvaciarcarrito1.setText("Vaciar carrito");
-        btvaciarcarrito1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btvaciarcarrito1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btvaciarcarrito1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -117,6 +94,7 @@ AgregarCarrito carrito = new AgregarCarrito();
 
     private void btReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReservacionesActionPerformed
         mc.mostarReservas(id, tabla1);
+
     }//GEN-LAST:event_btReservacionesActionPerformed
 
     private void bRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegresarActionPerformed
@@ -124,26 +102,35 @@ AgregarCarrito carrito = new AgregarCarrito();
         this.setVisible(false);
     }//GEN-LAST:event_bRegresarActionPerformed
 
-    private void bteliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bteliminar1ActionPerformed
-        /*DELETE b
-FROM booking b
-INNER JOIN tours t ON b.tour_id = t.id
-WHERE t.name = 'Tour a Machu Picchu' AND b.account_id = 2;
-*/
+    private void bteliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bteliminarActionPerformed
+        int selectedRow = tabla1.getSelectedRow();
+        
+        if (selectedRow != -1) {
+            columna =  tabla1.getValueAt(selectedRow, 0).toString();
+            produto =  tabla1.getValueAt(selectedRow, 1).toString();
+            System.out.println("ID seleccionado: " + id);
+            mc.deleteCarrito(columna + "s",columna,produto,this.id);
+            mc.mostarReservas(id, tabla1);
+        }else {
+            System.out.println("No se ha seleccionado ninguna fila.");
+        }
       
-    }//GEN-LAST:event_bteliminar1ActionPerformed
+    }//GEN-LAST:event_bteliminarActionPerformed
 
-    private void bteliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bteliminar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bteliminar2ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void btvaciarcarrito1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btvaciarcarrito1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btvaciarcarrito1ActionPerformed
+    private void BPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BPagarActionPerformed
+        int selectedRow = tabla1.getSelectedRow();
+        
+        if (selectedRow != -1) {
+            columna =  tabla1.getValueAt(selectedRow, 0).toString();
+            produto =  tabla1.getValueAt(selectedRow, 1).toString();
+            System.out.println("ID seleccionado: " + id);
+            JOptionPane.showMessageDialog(null, "¡La reserva ha sido pagada exitosamente!", "Información", JOptionPane.INFORMATION_MESSAGE);
+            mc.pagar(columna + "s",columna,this.id,produto );
+            mc.mostarReservas(id, tabla1);
+        }else {
+            System.out.println("No se ha seleccionado ninguna fila.");
+        }
+    }//GEN-LAST:event_BPagarActionPerformed
 
    
     public static void main(String args[]) {
@@ -179,18 +166,14 @@ WHERE t.name = 'Tour a Machu Picchu' AND b.account_id = 2;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BPagar;
     private javax.swing.JButton bRegresar;
     private javax.swing.JButton btReservaciones;
-    private javax.swing.JButton bteliminar1;
-    private javax.swing.JButton bteliminar2;
-    private javax.swing.JButton btvaciarcarrito1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton bteliminar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tabla1;
     // End of variables declaration//GEN-END:variables
 }

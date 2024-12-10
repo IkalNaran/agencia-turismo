@@ -39,7 +39,6 @@ com\agencia\turismo\service\Admintrador.class
 com\agencia\turismo\gui\Vuelos.class
 com\agencia\turismo\gui\Hotel$3.class
 com\agencia\turismo\gui\Reserva$3.class
-com\agencia\turismo\gui\Carrito$7.class
 com\agencia\turismo\gui\Login$1.class
 com\agencia\turismo\gui\Vuelos$2.class
 com\agencia\turismo\gui\Vuelos$1.class
@@ -52,7 +51,6 @@ com\agencia\turismo\service\Registrar.class
 com\agencia\turismo\service\MostrarCarrito.class
 com\agencia\turismo\gui\Hotel$2.class
 com\agencia\turismo\gui\Reserva$2.class
-com\agencia\turismo\gui\Carrito$6.class
 com\agencia\turismo\gui\Carrito$3.class
 com\agencia\turismo\gui\Inicio$3.class
 com\agencia\turismo\service\AgregarCarrito.class
