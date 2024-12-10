@@ -68,6 +68,11 @@ public class Admin extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         jButton1.setText("MODIFICAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
 
         jButton2.setText("AGREGAR");
@@ -146,17 +151,31 @@ public class Admin extends javax.swing.JFrame {
         if( eleccion == "hotels"){ 
             mc.mostrarContenidoHoteles(eleccion2);
             txtName.setText(mc.getName());
+            
+            txt2.setText("Tipo de Hotel");
             txtAero.setText(mc.getNumberAirline());
+            txt3.setText("Dirreción");
             txtTipoVuelo.setText(mc.getTypeAirlines());
+            txt4.setEnabled(false);
+            txtOrigen.setEnabled(false);
+            txt5.setEnabled(false);
+            txtFinal.setEnabled(false);
             txtPais.setText(mc.getCoutry());
             txtPrecio.setText( String.valueOf(mc.getPrice()));
             txtFecha.setText(String.valueOf(mc.getCreationDate()));
         }else if (eleccion == "airlines"){
             mc.mostrarContenidoVuelos(eleccion2);
             txtName.setText(mc.getName());
+            txt2.setText("Numero de airolinea");
             txtAero.setText(mc.getNumberAirline());
+            txt3.setText("Tipo de vuelo");
             txtTipoVuelo.setText(mc.getTypeAirlines());
+            txt4.setEnabled(true);
+            txtOrigen.setEnabled(true);
+            txt4.setText("Destino Origen");
             txtOrigen.setText(mc.getDestinyOrigin());
+            txt5.setEnabled(true);
+            txtFinal.setEnabled(true);
             txtFinal.setText(mc.getDestinyEnd());
             txtPais.setText(mc.getCoutry());
             txtPrecio.setText( String.valueOf(mc.getPrice()));
@@ -171,6 +190,8 @@ public class Admin extends javax.swing.JFrame {
             txt3.setText("Duracion");
             txtTipoVuelo.setText(mc.getTypeAirlines());
             
+            txt4.setEnabled(true);
+            txtOrigen.setEnabled(true);
             txt4.setText("Destino");
             txtOrigen.setText(mc.getDestinyOrigin());      
             
@@ -200,6 +221,19 @@ public class Admin extends javax.swing.JFrame {
         new Inicio().setVisible(true); 
         this.setVisible(false);
     }//GEN-LAST:event_BCerrarSesionActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        eleccion = (String) CBEleccion1.getSelectedItem();
+        eleccion2 = (String) CBEleccion2.getSelectedItem();
+        
+        if( eleccion == "hotels"){ 
+            mc.modificarHotel(txtName.getText(),txtAero.getText(),txtTipoVuelo.getText(), txtPais.getText(),txtPrecio.getText(), eleccion2);
+        }else if (eleccion == "airlines"){
+            mc.modificarAir(txtName.getText(),txtAero.getText(),txtTipoVuelo.getText(), txtOrigen.getText(),txtFinal.getText() , txtPais.getText(),txtPrecio.getText(), eleccion2);
+        }else if (eleccion == "tours"){
+            mc.modificarTour(txtName.getText(),txtAero.getText(),txtTipoVuelo.getText(), txtOrigen.getText(), txtPais.getText(),txtPrecio.getText(), txtName.getText());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
