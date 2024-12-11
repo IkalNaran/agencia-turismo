@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import org.mariadb.jdbc.Connection;
 
 public class AgregarCarrito {
-    MariaDBConnection mdbc = new MariaDBConnection();
+    private MariaDBConnection mdbc = new MariaDBConnection();
     private int id; 
     private int idProductos;
     private String tipo;

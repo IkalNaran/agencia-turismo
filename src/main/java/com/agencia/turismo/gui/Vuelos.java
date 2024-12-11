@@ -19,8 +19,12 @@ Ingresar login;
 
 int id;
     public Vuelos(int id) {
-        this.id = id;
         initComponents();
+        this.id = id;
+        vuelo.setName();
+        for (String name : vuelo.getName()){
+            CBVuelos.addItem(name);
+        }
     }
     
     public Vuelos() {
@@ -63,8 +67,8 @@ int id;
         jLabel2.setText("Vuelos");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
-        CBVuelos.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        CBVuelos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Airolinea"}));
+        CBVuelos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        CBVuelos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige el vuelo" }));
         CBVuelos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBVuelosActionPerformed(evt);
@@ -152,12 +156,6 @@ int id;
     }//GEN-LAST:event_BRegresarActionPerformed
 
     private void CBVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBVuelosActionPerformed
-       vuelo.setName();
-        
-        for (String name : vuelo.getName()){
-            CBVuelos.addItem(name);
-        }
-        
         this.nameVuelo = (String) CBVuelos.getSelectedItem();
         tipoVuelo.setText(vuelo.getType(nameVuelo));
         numero.setText(vuelo.getNumberAir(nameVuelo));

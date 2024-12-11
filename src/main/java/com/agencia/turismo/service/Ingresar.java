@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Ingresar {
-    MariaDBConnection mdbc = new MariaDBConnection();
+    private MariaDBConnection mdbc = new MariaDBConnection();
     private int id; 
     private String name;
     private String password; 
@@ -50,17 +50,10 @@ public class Ingresar {
         JOptionPane.showMessageDialog(null, message, "Resultado del inicio de sesión", messageType);
 
         if (success) {
-            // Obtener el rol del usuario
             String rol = getUserRole(this.id);
-
-            // Redirigir según el rol
             if ("administrador".equals(rol)) {
-                // Abre la interfaz de administración
-                System.out.println(rol);
                 new Admin(this.id).setVisible(true);
             } else if ("cliente".equals(rol)) {
-                // Abre la interfaz de cliente
-                System.out.println(rol);
                 new Reserva(this.id).setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Rol no reconocido.", "Error", JOptionPane.ERROR_MESSAGE);

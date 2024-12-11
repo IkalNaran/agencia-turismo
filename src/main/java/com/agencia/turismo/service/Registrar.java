@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Connection;
 
 public class Registrar {
-    MariaDBConnection mdbc = new MariaDBConnection();
+    private MariaDBConnection mdbc = new MariaDBConnection();
     private int id; 
     private String name;
     private String password; 

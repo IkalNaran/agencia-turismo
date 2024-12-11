@@ -9,7 +9,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Admintrador {
-    MariaDBConnection mdbc= new MariaDBConnection();
+    private MariaDBConnection mdbc= new MariaDBConnection();
     
     public void mostarReservas(String name, JTable tabla){
         String query = "SELECT \n" +

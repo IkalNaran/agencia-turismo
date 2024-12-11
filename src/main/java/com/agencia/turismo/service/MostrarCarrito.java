@@ -11,7 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class MostrarCarrito {
-    MariaDBConnection mdbc= new MariaDBConnection();
+    private MariaDBConnection mdbc= new MariaDBConnection();
     private String name;
     private String numberAirline;
     private String typeAirline;
@@ -26,7 +26,7 @@ public class MostrarCarrito {
     public void getDescription(String name, JTable tabla) {
         // Construye la consulta con el nombre de la tabla directamente
         String query = "SELECT * FROM " + name; 
-        String[] datos = new String[5];
+        String[] datos = new String[6];
         try (Statement st = mdbc.getConn().createStatement();
              ResultSet rs = st.executeQuery(query)) {
 
@@ -37,6 +37,7 @@ public class MostrarCarrito {
             model.addColumn("email");
             model.addColumn("password");
             model.addColumn("date_creation");
+            model.addColumn("role_id");
 
             // Llena el modelo con los datos obtenidos
             while (rs.next()) {
@@ -45,12 +46,14 @@ public class MostrarCarrito {
                 String userEmail = rs.getString("email");
                 String userPass = rs.getString("password");
                 String userDate = rs.getString("date_creation");
+                String userRol = rs.getString("role_id");
 
                 datos[0] = userId;
                 datos[1] = userName;
                 datos[2] = userEmail;
                 datos[3] = userPass;
                 datos[4] = userDate;
+                datos[5] = userRol;
 
                 // Agrega la fila al modelo
                 model.addRow(datos);
@@ -65,7 +68,23 @@ public class MostrarCarrito {
     }
     
     public void mostrarReservas(String accountId, JTable tabla) {
-        String query = "SELECT \n" +
+        String query = 
+            "SELECT \n" +
+            "    'tour' AS Tipo,\n" +
+            "    t.name AS Nombre,\n" +
+            "    bd.booking_date AS FechaReserva,\n" +
+            "    bd.return_date AS FechaRegreso,\n" +
+            "    bd.cancellation AS Cancelacion,\n" +
+            "    bd.creation_date AS FechaCreacion,\n" +
+            "    bd.pagado AS Pagado\n" +
+            "FROM tours t\n" +
+            "INNER JOIN booking b ON b.tour_id = t.id\n" +
+            "INNER JOIN booking_dates bd ON b.dates_id = bd.id\n" +
+            "WHERE b.account_id = ?\n" +
+            "\n" +
+            "UNION\n" +
+            "\n" +
+            "SELECT \n" +
             "    'hotels' AS Tipo,\n" +
             "    h.name AS Nombre,\n" +
             "    bd.booking_date AS FechaReserva,\n" +
@@ -91,12 +110,14 @@ public class MostrarCarrito {
             "FROM airlines a\n" +
             "INNER JOIN booking b ON b.airline_id = a.id\n" +
             "INNER JOIN booking_dates bd ON b.dates_id = bd.id\n" +
-            "WHERE b.account_id = ?";
+            "WHERE b.account_id = ?;";
+
 
         try (PreparedStatement ps = mdbc.getConn().prepareStatement(query)) {
             // Configura el parámetro del usuario
             ps.setString(1, accountId);
             ps.setString(2, accountId);
+            ps.setString(3, accountId);
 
             // Ejecuta la consulta
             ResultSet rs = ps.executeQuery();
@@ -393,58 +414,101 @@ public class MostrarCarrito {
     }
     
     public void eliminarTour(String name) {
-    String query = "DELETE FROM tours WHERE name = ?";
-    try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
-        pdst.setString(1, name);
-        int rowsAffected = pdst.executeUpdate();
-        
-        if (rowsAffected > 0) {
-            System.out.println("El tour '" + name + "' fue eliminado correctamente.");
-        } else {
-            System.out.println("No se encontró ningún tour con el nombre: " + name);
+        String query = "DELETE FROM tours WHERE name = ?";
+        try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
+            pdst.setString(1, name);
+            int rowsAffected = pdst.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("El tour '" + name + "' fue eliminado correctamente.");
+            } else {
+                System.out.println("No se encontró ningún tour con el nombre: " + name);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al intentar eliminar el tour: " + name);
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        System.err.println("Error al intentar eliminar el tour: " + name);
-        e.printStackTrace();
     }
-}
     
     public void eliminarAir(String name, String numberAirline) {
-    String query = "DELETE FROM airlines WHERE name = ? AND number_airline = ?";
-    try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
-        pdst.setString(1, name);
-        pdst.setString(2, numberAirline);
-        int rowsAffected = pdst.executeUpdate();
-        
-        if (rowsAffected > 0) {
-            System.out.println("La aerolínea '" + name + "' con número '" + numberAirline + "' fue eliminada correctamente.");
-        } else {
-            System.out.println("No se encontró ninguna aerolínea con el nombre '" + name + "' y número '" + numberAirline + "'.");
-        }
-    } catch (SQLException e) {
-        System.err.println("Error al intentar eliminar la aerolínea: " + name + " con número: " + numberAirline);
-        e.printStackTrace();
-    }
-}
+        String query = "DELETE FROM airlines WHERE name = ? AND number_airline = ?";
+        try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
+            pdst.setString(1, name);
+            pdst.setString(2, numberAirline);
+            int rowsAffected = pdst.executeUpdate();
 
-    
+            if (rowsAffected > 0) {
+                System.out.println("La aerolínea '" + name + "' con número '" + numberAirline + "' fue eliminada correctamente.");
+            } else {
+                System.out.println("No se encontró ninguna aerolínea con el nombre '" + name + "' y número '" + numberAirline + "'.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al intentar eliminar la aerolínea: " + name + " con número: " + numberAirline);
+            e.printStackTrace();
+        }
+    }
+
     public void eliminarHotel(String name) {
-    String query = "DELETE FROM hotels WHERE name = ?";
-    try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
-        pdst.setString(1, name);
-        int rowsAffected = pdst.executeUpdate();
-        
-        if (rowsAffected > 0) {
-            System.out.println("El hotel '" + name + "' fue eliminado correctamente.");
-        } else {
-            System.out.println("No se encontró ningún hotel con el nombre: '" + name + "'.");
-        }
-    } catch (SQLException e) {
-        System.err.println("Error al intentar eliminar el hotel: '" + name + "'.");
-        e.printStackTrace();
-    }
-}
+        String query = "DELETE FROM hotels WHERE name = ?";
+        try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
+            pdst.setString(1, name);
+            int rowsAffected = pdst.executeUpdate();
 
+            if (rowsAffected > 0) {
+                System.out.println("El hotel '" + name + "' fue eliminado correctamente.");
+            } else {
+                System.out.println("No se encontró ningún hotel con el nombre: '" + name + "'.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al intentar eliminar el hotel: '" + name + "'.");
+            e.printStackTrace();
+        }
+    }
+
+    public void eliminarUsers(int id){
+        String query = "DELETE FROM accounts WHERE user_id = ? "; 
+        String query2 = "DELETE FROM users WHERE id = ?"; 
+        
+        try(PreparedStatement pdst = mdbc.getConn().prepareStatement(query);
+                PreparedStatement pdst2 = mdbc.getConn().prepareStatement(query2)){
+            
+            pdst.setInt(1, id);
+            int rowsAffected = pdst.executeUpdate();
+            
+            pdst2.setInt(1, id);
+            pdst2.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("el id:'" + id + "' fue eliminado correctamente.");
+            } else {
+                System.out.println("No se encontró ningún user: " + id);
+            }
+        }catch(SQLException e){ 
+            System.out.println("Error al eliminar usuario: " + e);
+        }
+    }
+    
+    public void modificarUsers(int id, String name, String email, String password, int roleId){
+        String query = "UPDATE users SET user_name = ?, email = ?, password = ?, role_id = ? WHERE id = ?";
+        try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
+            pdst.setString(1, name);
+            pdst.setString(2, email);
+            pdst.setString(3, password);
+            pdst.setInt(4, roleId); 
+            pdst.setInt(5, id);
+            
+            int rowsAffected = pdst.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Fue modificado: " + id + " correctamente");
+            } else {
+                System.out.println("No se a podido modificar" + name);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al intentar eliminar el tour: " + name);
+            e.printStackTrace();
+        }
+    }
 
     public String getName() {
         return name;

@@ -18,8 +18,13 @@ String nameTour;
 Ingresar login;
 
     public Tours(int id) {
-        this.id = id;
         initComponents();
+        this.id = id;
+        tour.setName();
+        
+        for (String name : tour.getName() ){
+            CBTours.addItem(name);
+        }
     }
     public Tours() {
         initComponents();
@@ -60,7 +65,8 @@ Ingresar login;
         jLabel2.setText("Tours");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        CBTours.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opcion "}));
+        CBTours.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        CBTours.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige el tour" }));
         CBTours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBToursActionPerformed(evt);
@@ -126,12 +132,6 @@ Ingresar login;
     }// </editor-fold>//GEN-END:initComponents
 
     private void CBToursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBToursActionPerformed
-        tour.setName();
-        
-        for (String name : tour.getName() ){
-            CBTours.addItem(name);
-        }
-        
         this.nameTour = (String) CBTours.getSelectedItem();
         descripcion.setText(tour.getDescription(nameTour));
         duracion.setText(tour.getDuration(nameTour));

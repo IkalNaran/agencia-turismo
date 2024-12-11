@@ -117,17 +117,13 @@ public class AdimUser extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BMostrarReservaciones)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(BRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(BMostrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BModificar1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(BEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BModificar1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(BMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,22 +133,24 @@ public class AdimUser extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(BMostrar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BModificar1)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BEliminar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(BMostrarReservaciones)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BMostrarReservaciones)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(8, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BRegresar)
-                        .addGap(38, 38, 38)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                        .addGap(39, 39, 39))))
         );
 
         pack();
@@ -160,7 +158,6 @@ public class AdimUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMostrarActionPerformed
-       
         mc.getDescription("users", tabla1);
     }//GEN-LAST:event_BMostrarActionPerformed
 
@@ -180,52 +177,35 @@ public class AdimUser extends javax.swing.JFrame {
 
     private void BRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegresarActionPerformed
         new Admin(this.id).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BRegresarActionPerformed
 
     private void BModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BModificar1ActionPerformed
-        // TODO add your handling code here:
-        // Obtiene la fila seleccionada
-    int selectedRow = tabla1.getSelectedRow();
+        int selectedRow = tabla1.getSelectedRow();
     
-    if (selectedRow != -1) { // Verifica si se seleccionó una fila
-        try {
-            // Obtiene los valores de la fila seleccionada
-            String id = tabla1.getValueAt(selectedRow, 0).toString();
+        if (selectedRow != -1) {
+            int id = Integer.parseInt(tabla1.getValueAt(selectedRow, 0).toString());
             String user = tabla1.getValueAt(selectedRow, 1).toString();
             String email = tabla1.getValueAt(selectedRow, 2).toString();
             String password = tabla1.getValueAt(selectedRow, 3).toString();
-            String fechaCreacion = tabla1.getValueAt(selectedRow, 4).toString();
-
-            // Muestra un cuadro de diálogo para modificar los valores
-            String newUser = javax.swing.JOptionPane.showInputDialog(this, "Modificar usuario:", user);
-            String newEmail = javax.swing.JOptionPane.showInputDialog(this, "Modificar email:", email);
-            String newPassword = javax.swing.JOptionPane.showInputDialog(this, "Modificar contraseña:", password);
-
-            if (newUser != null && newEmail != null && newPassword != null) {
-                // Actualiza el registro en la base de datos usando el servicio
-                //boolean actualizado = mc.modificarUsuario(id, newUser, newEmail, newPassword);
-
-                if (true) {
-                    // Actualiza la tabla visualmente
-                    tabla1.setValueAt(newUser, selectedRow, 1);
-                    tabla1.setValueAt(newEmail, selectedRow, 2);
-                    tabla1.setValueAt(newPassword, selectedRow, 3);
-
-                    javax.swing.JOptionPane.showMessageDialog(this, "Usuario modificado exitosamente.");
-                } else {
-                    javax.swing.JOptionPane.showMessageDialog(this, "Error al modificar el usuario.");
-                }
-            }
-        } catch (Exception ex) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error: " + ex.getMessage());
+            int rol = Integer.parseInt(tabla1.getValueAt(selectedRow, 5).toString());
+            mc.modificarUsers(id,user,email,password,rol);
+            mc.getDescription("users", tabla1);
         }
-    } else {
-        javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un registro para modificar.");
-    }
+            
     }//GEN-LAST:event_BModificar1ActionPerformed
 
     private void BEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEliminarActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = tabla1.getSelectedRow(); 
+
+        if (selectedRow != -1) { 
+            int id =  Integer.parseInt(tabla1.getValueAt(selectedRow, 0).toString()); 
+            System.out.println("ID seleccionado: " + id);
+            mc.eliminarUsers(id);
+            mc.getDescription("users", tabla1);
+        } else {
+            System.out.println("No se ha seleccionado ninguna fila.");
+        }
         
     }//GEN-LAST:event_BEliminarActionPerformed
 

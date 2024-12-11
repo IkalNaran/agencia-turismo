@@ -57,6 +57,7 @@ com\agencia\turismo\service\MostrarCarrito.class
 com\agencia\turismo\gui\Hotel$2.class
 com\agencia\turismo\gui\Reserva$2.class
 com\agencia\turismo\gui\Carrito$3.class
+com\agencia\turismo\gui\Login$5.class
 com\agencia\turismo\gui\Inicio$3.class
 com\agencia\turismo\service\AgregarCarrito.class
 com\agencia\turismo\gui\Login$3.class

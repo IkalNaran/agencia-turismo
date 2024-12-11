@@ -19,9 +19,15 @@ public class Hotel extends javax.swing.JFrame {
     String nameHotel;
     Ingresar login;
  
-    public Hotel(int id) {
-        this.id = id;
+    public Hotel(int id) {    
         initComponents();
+        this.id = id;
+        ht.setName();
+        
+        for(String name: ht.getName() ){
+            CBHotel.addItem(name);
+        }
+        
     }
     
     public Hotel() {
@@ -65,7 +71,8 @@ public class Hotel extends javax.swing.JFrame {
         jLabel2.setText("Hoteles");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
-        CBHotel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hotel Plaza", "Gran Caribe", "Beach Resort", "Hotel Central", "Casa Blanca", "Royal Suites", "Grand Hyatt", "La Playa", "Hotel Andino", "Hotel de Ville" }));
+        CBHotel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        CBHotel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige el hotel" }));
         CBHotel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBHotelActionPerformed(evt);
@@ -142,18 +149,11 @@ public class Hotel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CBHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBHotelActionPerformed
-       
-        ht.setName();
-        
-        for(String name: ht.getName() ){
-            CBHotel.addItem(name);
-        }
         this.nameHotel = (String) CBHotel.getSelectedItem();
         tipo.setText(ht.getType(nameHotel));
         direccion.setText(ht.getAddress(nameHotel));
         pais.setText(ht.getCountry(nameHotel));
         precio.setText("$" + ht.getPrice(nameHotel) + " pesos");
-        
     }//GEN-LAST:event_CBHotelActionPerformed
 
     private void direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionActionPerformed

@@ -33,43 +33,46 @@ int id;
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bthoteles.setText("Hoteles");
+        bthoteles.setText("HOTELES");
+        bthoteles.setBorder(null);
         bthoteles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bthotelesActionPerformed(evt);
             }
         });
-        getContentPane().add(bthoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 100, -1));
+        getContentPane().add(bthoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 140, 80));
 
-        btvuelos.setText("Vuelos");
+        btvuelos.setText("VUELOS");
+        btvuelos.setBorder(null);
         btvuelos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btvuelosActionPerformed(evt);
             }
         });
-        getContentPane().add(btvuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 100, -1));
+        getContentPane().add(btvuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 140, 80));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI Historic", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("RESERVA YA!");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 150, 40));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 150, 40));
 
-        bttours.setText("Tours");
+        bttours.setText("TOURS");
+        bttours.setBorder(null);
         bttours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttoursActionPerformed(evt);
             }
         });
-        getContentPane().add(bttours, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 240, 100, -1));
+        getContentPane().add(bttours, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 140, 80));
 
-        btsalir.setText("Salir");
+        btsalir.setText("SALIR");
         btsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btsalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, -1, -1));
+        getContentPane().add(btsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 350, -1, -1));
 
         btcarrito.setMnemonic('c');
         btcarrito.setText("carrito");
@@ -78,15 +81,15 @@ int id;
                 btcarritoActionPerformed(evt);
             }
         });
-        getContentPane().add(btcarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 70, 40));
+        getContentPane().add(btcarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 70, 40));
 
-        btcerrarsesion.setText("cerrar sesion");
+        btcerrarsesion.setText("CERRAR SESIÓN");
         btcerrarsesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btcerrarsesionActionPerformed(evt);
             }
         });
-        getContentPane().add(btcerrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, -1, -1));
+        getContentPane().add(btcerrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, -1, -1));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
