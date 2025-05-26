@@ -20,11 +20,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>3.5.0</version>
-        </dependency>
-        <dependency>
             <groupId>unknown.binary</groupId>
             <artifactId>AbsoluteLayout</artifactId>
             <version>SNAPSHOT</version>
@@ -36,6 +31,13 @@
             <artifactId>jcalendar</artifactId>
             <version>1.4</version>
             <type>jar</type>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 -->
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>23.8.0.25.04</version>
         </dependency>
 
     </dependencies>
