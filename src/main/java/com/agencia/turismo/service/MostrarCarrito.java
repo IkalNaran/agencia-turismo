@@ -1,6 +1,6 @@
 package com.agencia.turismo.service;
 
-import com.agencia.turismo.repository.MariaDBConnection;
+import com.agencia.turismo.repository.oracleDBConnection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class MostrarCarrito {
-    private MariaDBConnection mdbc= new MariaDBConnection();
+    private oracleDBConnection mdbc= new oracleDBConnection();
     private String name;
     private String numberAirline;
     private String typeAirline;

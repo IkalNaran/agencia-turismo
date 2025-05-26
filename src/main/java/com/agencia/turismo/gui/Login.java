@@ -33,7 +33,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("USUARIO");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 150, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 150, -1));
 
         usuario.setToolTipText("");
         usuario.setBorder(null);
@@ -52,8 +52,8 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 160, -1));
 
         BIniciarSesion.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        BIniciarSesion.setText("INICIAR SESIÓN");
-        BIniciarSesion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        BIniciarSesion.setText("iniciar sesión");
+        BIniciarSesion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BIniciarSesionActionPerformed(evt);
@@ -61,10 +61,11 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(BIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 180, 40));
 
-        contrasena.setBorder(null);
+        contrasena.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         getContentPane().add(contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 240, 40));
 
         jButton3.setText("REGISTRARSE");
+        jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -73,6 +74,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 120, 30));
 
         BRregresar.setText("REGRESAR");
+        BRregresar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BRregresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BRregresarActionPerformed(evt);

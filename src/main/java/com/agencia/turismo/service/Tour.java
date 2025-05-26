@@ -1,6 +1,6 @@
 package com.agencia.turismo.service;
 
-import com.agencia.turismo.repository.MariaDBConnection;
+import com.agencia.turismo.repository.oracleDBConnection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import java.sql.Connection;
 
 public class Tour {
-    private MariaDBConnection mdbc = new MariaDBConnection();
+    private oracleDBConnection mdbc = new oracleDBConnection();
     private List<String> hotelNames = new ArrayList<>();
     private int id_tour; 
     

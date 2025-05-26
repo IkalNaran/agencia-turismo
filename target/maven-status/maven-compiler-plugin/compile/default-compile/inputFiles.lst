@@ -1,5 +1,6 @@
 C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\gui\AdimUser.java
 C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\gui\Admin.java
+C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\gui\AdminConteo.java
 C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\gui\Carrito.java
 C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\gui\Hotel.java
 C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\gui\Inicio.java
@@ -8,7 +9,7 @@ C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\age
 C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\gui\Reserva.java
 C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\gui\Tours.java
 C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\gui\Vuelos.java
-C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\repository\MariaDBConnection.java
+C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\repository\oracleDBConnection.java
 C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\service\Admintrador.java
 C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\service\AgregarCarrito.java
 C:\Users\angel\OneDrive\Documentos\agencia\agencia-turismo\src\main\java\com\agencia\turismo\service\Hoteles.java

@@ -1,6 +1,6 @@
 package com.agencia.turismo.service;
 
-import com.agencia.turismo.repository.MariaDBConnection;
+import com.agencia.turismo.repository.oracleDBConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +9,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Admintrador {
-    private MariaDBConnection mdbc= new MariaDBConnection();
+    private oracleDBConnection mdbc= new oracleDBConnection();
     
     public void mostarReservas(String name, JTable tabla){
         String query = "SELECT \n" +

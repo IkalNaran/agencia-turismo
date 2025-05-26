@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class MariaDBConnection {
-    private static final String user = "root";
+public class oracleDBConnection {
+    private static final String user = "C##ikalnaran";
     private static final String pass = "C0smopolis.";
-    private static final String url = "jdbc:mariadb://127.0.0.1:3307/exploitiz";
+    String url = "jdbc:oracle:thin:@//mine.ikalnaran.com:1521/XE";
     private Connection conn;
     
-    public MariaDBConnection() {
+    public oracleDBConnection() {
         try {
             conn = (Connection) DriverManager.getConnection(url, user, pass);
         } catch (SQLException e) {

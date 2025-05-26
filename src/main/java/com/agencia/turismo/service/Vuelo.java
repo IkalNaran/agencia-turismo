@@ -1,6 +1,6 @@
 package com.agencia.turismo.service;
 
-import com.agencia.turismo.repository.MariaDBConnection;
+import com.agencia.turismo.repository.oracleDBConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Vuelo {
-    private MariaDBConnection mdbc = new MariaDBConnection();
+    private oracleDBConnection mdbc = new oracleDBConnection();
     private List<String> hotelNames = new ArrayList<>();
     
     public void setName(){

@@ -8,10 +8,10 @@ com\agencia\turismo\gui\Inicio.class
 com\agencia\turismo\service\Vuelo.class
 com\agencia\turismo\gui\Registro.class
 com\agencia\turismo\gui\Carrito$5.class
+com\agencia\turismo\gui\AdminConteo.class
 com\agencia\turismo\gui\AdimUser$5.class
 com\agencia\turismo\gui\Registro$4.class
 com\agencia\turismo\gui\Carrito$1.class
-com\agencia\turismo\repository\MariaDBConnection.class
 com\agencia\turismo\gui\Hotel$7.class
 com\agencia\turismo\gui\Admin$2.class
 com\agencia\turismo\service\Tour.class
@@ -46,6 +46,7 @@ com\agencia\turismo\gui\Reserva$3.class
 com\agencia\turismo\gui\Login$1.class
 com\agencia\turismo\gui\Vuelos$2.class
 com\agencia\turismo\gui\Vuelos$1.class
+com\agencia\turismo\gui\AdminConteo$1.class
 com\agencia\turismo\gui\Hotel$5.class
 com\agencia\turismo\gui\Reserva$5.class
 com\agencia\turismo\gui\Login$2.class
@@ -73,3 +74,4 @@ com\agencia\turismo\gui\Carrito$2.class
 com\agencia\turismo\gui\Registro$3.class
 com\agencia\turismo\gui\Reserva$1.class
 com\agencia\turismo\gui\AdimUser$4.class
+com\agencia\turismo\repository\oracleDBConnection.class

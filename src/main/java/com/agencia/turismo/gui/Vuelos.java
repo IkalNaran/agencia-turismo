@@ -63,12 +63,13 @@ int id;
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel2.setText("Vuelos");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         CBVuelos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         CBVuelos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige el vuelo" }));
+        CBVuelos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         CBVuelos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBVuelosActionPerformed(evt);
@@ -77,51 +78,53 @@ int id;
         getContentPane().add(CBVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 140, 30));
 
         BRegresar.setBackground(new java.awt.Color(0, 0, 0));
-        BRegresar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        BRegresar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         BRegresar.setForeground(new java.awt.Color(255, 255, 255));
         BRegresar.setText("Regresar");
+        BRegresar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(BRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, -1, -1));
+        getContentPane().add(BRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 60, 30));
 
         BAgregar.setBackground(new java.awt.Color(0, 0, 0));
-        BAgregar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        BAgregar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         BAgregar.setForeground(new java.awt.Color(255, 255, 255));
         BAgregar.setText("Agregar");
+        BAgregar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BAgregarActionPerformed(evt);
             }
         });
-        getContentPane().add(BAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, -1, -1));
+        getContentPane().add(BAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 60, 30));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Pais:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Numero airolinea:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel6.setText("Destino origen");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setText("Destino origen:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel7.setText("Destino Final");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, 30));
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel7.setText("Destino Final:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, 20));
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setText("Precio:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setText("Tipo de vuelo:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
         getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 200, -1));
         getContentPane().add(tipoVuelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 260, -1));
         getContentPane().add(numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 260, -1));
@@ -129,21 +132,26 @@ int id;
         getContentPane().add(destinoF, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 260, -1));
         getContentPane().add(pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 220, -1));
 
+        BFechaRegreso.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         BFechaRegreso.setText("Fecha Regreso");
+        BFechaRegreso.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        BFechaRegreso.setPreferredSize(new java.awt.Dimension(85, 16));
         BFechaRegreso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BFechaRegresoActionPerformed(evt);
             }
         });
-        getContentPane().add(BFechaRegreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
+        getContentPane().add(BFechaRegreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 100, 30));
 
+        BFechaReserva.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         BFechaReserva.setText("Fecha Reserva");
+        BFechaReserva.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BFechaReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BFechaReservaActionPerformed(evt);
             }
         });
-        getContentPane().add(BFechaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+        getContentPane().add(BFechaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 110, 30));
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         pack();

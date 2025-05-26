@@ -1,7 +1,7 @@
 
 package com.agencia.turismo.service;
 
-import com.agencia.turismo.repository.MariaDBConnection;
+import com.agencia.turismo.repository.oracleDBConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import java.sql.Connection;
 
 public class Registrar {
-    private MariaDBConnection mdbc = new MariaDBConnection();
+    private oracleDBConnection mdbc = new oracleDBConnection();
     private int id; 
     private String name;
     private String password; 
