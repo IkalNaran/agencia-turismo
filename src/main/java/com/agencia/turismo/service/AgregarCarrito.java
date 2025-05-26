@@ -9,7 +9,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import org.mariadb.jdbc.Connection;
+import java.sql.Connection;
 
 public class AgregarCarrito {
     private MariaDBConnection mdbc = new MariaDBConnection();

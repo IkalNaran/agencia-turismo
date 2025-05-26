@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import org.mariadb.jdbc.Connection;
+import java.sql.Connection;
 
 public class Tour {
     private MariaDBConnection mdbc = new MariaDBConnection();

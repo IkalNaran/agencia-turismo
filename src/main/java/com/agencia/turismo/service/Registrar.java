@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import org.mariadb.jdbc.Connection;
+import java.sql.Connection;
 
 public class Registrar {
     private MariaDBConnection mdbc = new MariaDBConnection();
