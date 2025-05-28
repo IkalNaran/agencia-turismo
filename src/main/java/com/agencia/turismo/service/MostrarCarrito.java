@@ -266,21 +266,21 @@ public class MostrarCarrito {
     
     public void modificarHotel(String hotelName, String typeHotel, String address, String country, String price, String currentHotelName) {
         String query = "UPDATE hotels h " +
-                       "JOIN country c ON c.name = ? " + // País como parámetro
-                       "SET h.name = ?, " +
-                       "    h.type_hotel = ?, " +
-                       "    h.address = ?, " +
-                       "    h.country_id = c.id, " + // Asignar country_id basado en el país
-                       "    h.price = ? " +
-                       "WHERE h.name = ?"; // Nombre actual del hotel como parámetro
+                        "SET h.name = ?," +
+                        "    h.type_hotel = ?," +
+                        "    h.address = ?," +
+                        "    h.country_id = (" +
+                        "    SELECT c.id FROM country c WHERE c.name = ? ),\n" +
+                        "    h.price = ?\n" +
+                        "WHERE h.name = ?";// Nombre actual del hotel como parámetro
 
         try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
 
             // Asignar valores a los parámetros
-            pdst.setString(1, country);          // c.name
-            pdst.setString(2, hotelName);       // h.name
-            pdst.setString(3, typeHotel);       // h.type_hotel
-            pdst.setString(4, address);         // h.address
+            pdst.setString(1, hotelName);       // h.name
+            pdst.setString(2, typeHotel);       // h.type_hotel
+            pdst.setString(3, address);         // h.address
+            pdst.setString(4, country);          // c.name
             pdst.setString(5, price);           // h.price
             pdst.setString(6, currentHotelName);// h.name en WHERE
 
@@ -295,23 +295,23 @@ public class MostrarCarrito {
     
     public void modificarTour(String name, String description, String duration, String destiny,String country, String price, String currentName){
         String query = "UPDATE tours t " +
-            "JOIN country c ON c.name = ? " +
-            "SET t.name = ?," +
-            "    t.description = ?," +
-            "    t.duration = ?," +
-            "    t.destiny = ?," +
-            "    t.country_id = c.id," +
-            "    t.price = ?" +
-            "WHERE t.name = ?;"; // Nombre actual del hotel como parámetro
+               "SET t.name = ?, " +
+               "    t.description = ?, " +
+               "    t.duration = ?, " +
+               "    t.destiny = ?, " +
+               "    t.country_id = (SELECT c.id FROM country c WHERE c.name = ?), " +
+               "    t.price = ? " +
+               "WHERE t.name = ?";// Nombre actual del hotel como parámetro
 
         try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
 
             // Asignar valores a los parámetros
-            pdst.setString(1, country);          // c.name
-            pdst.setString(2, name);       // h.name
-            pdst.setString(3, description);       // h.type_hotel
-            pdst.setString(4, duration);         // h.address
-            pdst.setString(5, destiny);           // h.price
+            
+            pdst.setString(1, name);       // h.name
+            pdst.setString(2, description);       // h.type_hotel
+            pdst.setString(3, duration);         // h.address
+            pdst.setString(4, destiny);           // h.price
+            pdst.setString(5, country);          // c.name
             pdst.setString(6, price);// h.name en WHERE
             pdst.setString(7, currentName);// h.name en WHERE
 
@@ -324,24 +324,23 @@ public class MostrarCarrito {
     }
     
     public void modificarAir(String name, String typeAirline, String destinyOrigen, String destinyEnd,String country, String price,String currentName){
-        String query = "UPDATE airlines t " +
-            "JOIN country c ON c.name = ? " +
-            "SET t.name = ?," +
-            "    t.type_airline = ?," +
-            "    t.destiny_origin = ?," +
-            "    t.destiny_end = ?," +
-            "    t.country_id = c.id," +
-            "    t.price = ?" +
-            "WHERE t.name = ?;"; // Nombre actual del hotel como parámetro
+            String query = "UPDATE airlines t " +
+               "SET t.name = ?, " +
+               "    t.type_airline = ?, " +
+               "    t.destiny_origin = ?, " +
+               "    t.destiny_end = ?, " +
+               "    t.country_id = (SELECT c.id FROM country c WHERE c.name = ?), " +
+               "    t.price = ? " +
+               "WHERE t.name = ?"; // Nombre actual del hotel como parámetro
 
         try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
 
             // Asignar valores a los parámetros
-            pdst.setString(1, country);
-            pdst.setString(2, name);
-            pdst.setString(3, typeAirline);         
-            pdst.setString(4, destinyOrigen);  
-            pdst.setString(5, destinyEnd);
+            pdst.setString(1, name);
+            pdst.setString(2, typeAirline);         
+            pdst.setString(3, destinyOrigen);  
+            pdst.setString(4, destinyEnd);
+            pdst.setString(5, country);
             pdst.setString(6, price);
             pdst.setString(7, currentName);
 

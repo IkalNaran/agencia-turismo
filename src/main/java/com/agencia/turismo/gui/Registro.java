@@ -119,7 +119,7 @@ public class Registro extends javax.swing.JFrame {
         String telefono = txttelefono.getText();
         String direccion = txtdireccion.getText();
         
-        Registrar  registrar = new Registrar(); 
+        Registrar registrar = new Registrar(); 
         boolean reg = registrar.insertUsuario(nombre, apellido, edad, telefono, usuario, email, password);
         if(reg){
             new Login().setVisible(true); 
