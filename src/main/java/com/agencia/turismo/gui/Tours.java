@@ -146,7 +146,7 @@ Ingresar login;
 
     private void reservaFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservaFechaActionPerformed
         JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setDateFormatString("dd/MM/yyyy"); // Formato de la fecha
+        dateChooser.setDateFormatString("yyyy/MM/dd"); // Formato de la fecha
         dateChooser.setPreferredSize(new Dimension(200, 30)); // Tamaño del componente
 
         // Crear un JPanel para añadir el JDateChooser

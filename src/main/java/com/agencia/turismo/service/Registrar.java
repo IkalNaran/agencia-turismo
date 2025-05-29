@@ -19,8 +19,6 @@ public class Registrar {
         String queryClients = "INSERT INTO clients (name, lastname, age, phone) VALUES (?, ?, ?, ?)";
         String queryUsers = "INSERT INTO users (user_name, email, password) VALUES (?, ?, ?)";
         String queryUnion = "INSERT INTO accounts(user_id,client_id) value (?,?)";
-        String querySelectUser = "SELECT id FROM clients WHERE phone = ?"; 
-        String querySelectClients = "SELECT id FROM users WHERE user_name = ?";
         Connection conn = mdbc.getConn();
         
         try {
@@ -45,6 +43,10 @@ public class Registrar {
                 
                 ResultSet generatedKeysClient = pdstClients.getGeneratedKeys();
                 ResultSet generatedKeysUser = pdstUsers.getGeneratedKeys();
+                
+                System.out.println("generatedKeysClient:" + generatedKeysClient.next());
+                System.out.println("generatedKeysUser:" + generatedKeysUser.next());
+              
                 if (generatedKeysClient.next() && generatedKeysUser.next()) {
                     int clientId = generatedKeysClient.getInt(1);
                     int userId = generatedKeysUser.getInt(1);

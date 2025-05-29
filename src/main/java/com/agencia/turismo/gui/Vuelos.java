@@ -126,6 +126,12 @@ int id;
         jLabel9.setText("Tipo de vuelo:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
         getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 200, -1));
+
+        tipoVuelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoVueloActionPerformed(evt);
+            }
+        });
         getContentPane().add(tipoVuelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 260, -1));
         getContentPane().add(numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 260, -1));
         getContentPane().add(destinoO, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 260, -1));
@@ -175,7 +181,7 @@ int id;
 
     private void BFechaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFechaReservaActionPerformed
         JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setDateFormatString("dd/MM/yyyy"); // Formato de la fecha
+        dateChooser.setDateFormatString("yyyy/MM/dd"); // Formato de la fecha
         dateChooser.setPreferredSize(new Dimension(200, 30)); // Tamaño del componente
 
         // Crear un JPanel para añadir el JDateChooser
@@ -208,13 +214,14 @@ int id;
 
     private void BAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAgregarActionPerformed
         carrito.setId(this.id);
-        carrito.setIdProducto("airlines", nameVuelo);
+        System.out.println(nameVuelo);
+        carrito.setIdProducto("AIRLINES", this.nameVuelo);
         carrito.insertBookingVuelos(selectedDate,selectedDate2);
     }//GEN-LAST:event_BAgregarActionPerformed
 
     private void BFechaRegresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFechaRegresoActionPerformed
         JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setDateFormatString("dd/MM/yyyy"); // Formato de la fecha
+        dateChooser.setDateFormatString("yyyy/MM/dd"); // Formato de la fecha
         dateChooser.setPreferredSize(new Dimension(200, 30)); // Tamaño del componente
 
         // Crear un JPanel para añadir el JDateChooser
@@ -244,6 +251,10 @@ int id;
             System.out.println("No se seleccionó ninguna fecha.");
         }
     }//GEN-LAST:event_BFechaRegresoActionPerformed
+
+    private void tipoVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoVueloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoVueloActionPerformed
 
     public static void main(String args[]) {
         

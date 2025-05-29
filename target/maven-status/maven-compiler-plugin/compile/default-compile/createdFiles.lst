@@ -62,6 +62,7 @@ com\agencia\turismo\gui\Login$5.class
 com\agencia\turismo\gui\Inicio$3.class
 com\agencia\turismo\service\AgregarCarrito.class
 com\agencia\turismo\gui\Login$3.class
+com\agencia\turismo\gui\Vuelos$7.class
 com\agencia\turismo\gui\AdimUser$1.class
 com\agencia\turismo\gui\Reserva$4.class
 com\agencia\turismo\service\Hoteles.class

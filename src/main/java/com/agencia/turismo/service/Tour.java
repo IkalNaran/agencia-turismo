@@ -102,7 +102,7 @@ public class Tour {
             try (ResultSet rs = pdst.executeQuery()) {
                 if (rs.next()) {
                     // Si hay un resultado, significa que el inicio de sesión fue exitoso
-                    String userId = rs.getString("c.name");
+                    String userId = rs.getString("name");
                     return userId;                
                 } else {
                     return "";

@@ -167,7 +167,7 @@ public class Hotel extends javax.swing.JFrame {
 
     private void BFechaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFechaReservaActionPerformed
         JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setDateFormatString("dd/MM/yyyy"); // Formato de la fecha
+        dateChooser.setDateFormatString("yyyy/MM/dd"); // Formato de la fecha
         dateChooser.setPreferredSize(new Dimension(200, 30)); // Tamaño del componente
 
         // Crear un JPanel para añadir el JDateChooser
@@ -200,7 +200,7 @@ public class Hotel extends javax.swing.JFrame {
 
     private void BFechaRegresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFechaRegresoActionPerformed
         JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setDateFormatString("dd/MM/yyyy"); // Formato de la fecha
+        dateChooser.setDateFormatString("yyyy/MM/dd"); // Formato de la fecha
         dateChooser.setPreferredSize(new Dimension(200, 30)); // Tamaño del componente
 
         // Crear un JPanel para añadir el JDateChooser

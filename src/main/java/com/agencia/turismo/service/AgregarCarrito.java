@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 
 public class AgregarCarrito {
-    private oracleDBConnection mdbc = new oracleDBConnection();
+    private final oracleDBConnection mdbc = new oracleDBConnection();
     private int id; 
     private int idProductos;
     private String tipo;
@@ -26,29 +26,31 @@ public class AgregarCarrito {
     }
 
     public void setIdProducto(String tabla, String name) {
-        String query = "SELECT id FROM " + tabla + " WHERE name = ?";
-        try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
-            pdst.setString(1, name);
-
-            try (ResultSet rs = pdst.executeQuery()) {
-                if (rs.next()) {
-                    this.idProductos = rs.getInt("id");
-                } else {
-                    System.out.println("Producto no encontrado en la tabla " + tabla);
-                }
+    String query = "SELECT ID FROM " + tabla + " WHERE NAME = ?";
+    try (PreparedStatement pdst = mdbc.getConn().prepareStatement(query)) {
+        pdst.setString(1, name);
+        
+        try (ResultSet rs = pdst.executeQuery()) {
+            if (rs.next()) {
+                this.idProductos = rs.getInt("ID");
+                System.out.println("ID del producto encontrado: " + this.idProductos);
+            } else {
+                System.out.println("Producto no encontrado en la tabla " + tabla);
             }
-        } catch (SQLException e) {
-            System.out.println("Error al obtener el ID del producto: " + e.getMessage());
         }
+    } catch (SQLException e) {
+        System.out.println("Error al obtener el ID del producto: " + e.getMessage());
     }
+}
+
 
     public boolean insertBookingTours(Date fecha) {
         String queryBookd = "INSERT INTO booking_dates (booking_date) VALUES (?)";
         String queryBooking = "INSERT INTO booking (account_id, tour_id, dates_id) VALUES (?,?,?)";
-
-        try (Connection conn = mdbc.getConn()) {
+        Connection conn = mdbc.getConn();
+        
+        try {
             conn.setAutoCommit(false);
-
             try (PreparedStatement pdstBGD = conn.prepareStatement(queryBookd, Statement.RETURN_GENERATED_KEYS);
                  PreparedStatement pdstBG = conn.prepareStatement(queryBooking, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -58,6 +60,7 @@ public class AgregarCarrito {
 
                 int datesId;
                 try (ResultSet key = pdstBGD.getGeneratedKeys()) {
+                    System.out.println(key.next());
                     if (key.next()) {
                         datesId = key.getInt(1);
                         System.out.println("ID generado para booking_dates: " + datesId);
@@ -92,54 +95,51 @@ public class AgregarCarrito {
     }
     
     public boolean insertBookingVuelos(Date fechaInicio, Date fechaFin) {
-        String queryBookd = "INSERT INTO booking_dates (booking_date, return_date) VALUES (?, ?)";
-        String queryBooking = "INSERT INTO booking (account_id, airline_id, dates_id) VALUES (?,?,?)";
+    String queryBookd = "INSERT INTO booking_dates (booking_date, return_date) VALUES (?, ?)";
+    String queryBooking = "INSERT INTO booking (account_id, airline_id, dates_id) VALUES (?, ?, ?)";
 
         try (Connection conn = mdbc.getConn()) {
             conn.setAutoCommit(false);
 
-            try (PreparedStatement pdstBGD = conn.prepareStatement(queryBookd, Statement.RETURN_GENERATED_KEYS);
-                 PreparedStatement pdstBG = conn.prepareStatement(queryBooking, Statement.RETURN_GENERATED_KEYS)) {
-
-                // Insertar en la tabla de fechas
+            try (
+                PreparedStatement pdstBGD = conn.prepareStatement(queryBookd, Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement pdstBG = conn.prepareStatement(queryBooking)
+            ) {
+                // Insertar en booking_dates
                 pdstBGD.setDate(1, fechaInicio);
                 pdstBGD.setDate(2, fechaFin);
                 pdstBGD.executeUpdate();
-
-                int datesId;
-                try (ResultSet key = pdstBGD.getGeneratedKeys()) {
-                    if (key.next()) {
-                        datesId = key.getInt(1);
+                ResultSet result = pdstBGD.getGeneratedKeys();
+ 
+                try  {
+                        result.next();
+                        int datesId = result.getInt(1);
                         System.out.println("ID generado para booking_dates: " + datesId);
-                    } else {
-                        throw new SQLException("No se pudo obtener el ID generado para booking_dates.");
+
+                        // Insertar en booking
+                        pdstBG.setInt(1, this.id);           // account_id
+                        pdstBG.setInt(2, this.idProductos);  // airline_id
+                        pdstBG.setInt(3, datesId);           // dates_id
+                        pdstBG.executeUpdate();
+
+                        conn.commit();
+                        JOptionPane.showMessageDialog(null, "¡Reserva agregada correctamente!");
+                        return true;
+                    } catch (SQLException e) {
+                        conn.rollback(); // Deshacer la transacción en caso de error
+                        JOptionPane.showMessageDialog(null, "Error al ingresar el id: " + e);
+                        return false;
                     }
                 }
-
-                // Insertar en la tabla de reservas
-                pdstBG.setInt(1, this.id);
-                pdstBG.setInt(2, this.idProductos);
-                pdstBG.setInt(3, datesId);
-                pdstBG.executeUpdate();
-
-                conn.commit();
-                JOptionPane.showMessageDialog(null, "¡Reserva agregada correctamente!");
-                return true;
-
-            } catch (SQLException e) {
-                conn.rollback();
-                JOptionPane.showMessageDialog(null, "Error al agregar la reserva: " + e.getMessage());
-                return false;
-
-            } finally {
-                conn.setAutoCommit(true);
-            }
+     
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error de conexión: " + e.getMessage());
+            e.printStackTrace();
             return false;
         }
     }
+
     
     public boolean insertBookingHoteles(Date fechaInicio, Date fechaFin) {
         String queryBookd = "INSERT INTO booking_dates (booking_date, return_date) VALUES (?, ?)";
@@ -155,14 +155,16 @@ public class AgregarCarrito {
                 pdstBGD.setDate(1, fechaInicio);
                 pdstBGD.setDate(2, fechaFin);
                 pdstBGD.executeUpdate();
-
-                int datesId;
+               int datesId = 0;
                 try (ResultSet key = pdstBGD.getGeneratedKeys()) {
+                    System.out.println("key:" + key.next());
                     if (key.next()) {
-                        datesId = key.getInt(1);
+                        int datesId1= key.getInt(1);
+                        datesId = datesId1;
                         System.out.println("ID generado para booking_dates: " + datesId);
                     } else {
                         throw new SQLException("No se pudo obtener el ID generado para booking_dates.");
+                       
                     }
                 }
 
